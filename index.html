@@ -27,8 +27,8 @@
 			<div class="slides">
 				<section>
 				<h1>About git</h1>
-				<h2 class="fragment">for collegaues from</h2>
-				<h2 class="fragment">idevelopment.pl</h2>
+				<h2 class="fragment">for collegaues</h2>
+				<h2 class="fragment">from idevelopment.pl</h2>
 				</section>
 				<section>
 					<section>
@@ -53,8 +53,12 @@
 						(branchname)$
 						</code></pre>
 					</section>
-					<section>good practise in local environment !</section>
-					<section>and must have on production server !</section>
+					<section>
+						good practise in local environment !
+					</section>
+					<section>
+						and must have on production server !
+					</section>
 				</section>
 				<section>
 					<section>
@@ -62,38 +66,107 @@
 					</section>
 
 					<section>
-					Create a folder and go to it.
-					<pre><code data-trim data-noescape>
-					~ $ mkdir presentation
-					~ $ cd presentation/
- 					</code></pre>
- 					initialize empty git repository
- 					<pre><code data-trim data-noescape>
-					~/presentation $ git init
-					Initialized empty Git repository in /home/jedrzej/presentation/.git/
-					</code></pre>
+						Create a folder and go to it.
+						<pre>
+							<code data-trim data-noescape class="bash">
+								~ $ mkdir presentation
+								~ $ cd presentation/
+ 							</code>
+ 						</pre>
+ 						initialize empty git repository
+ 						<pre>
+ 							<code data-trim data-noescape class="bash">
+								~/presentation $ git init
+								Initialized empty Git repository in /home/jedrzej/presentation/.git/
+							</code>
+						</pre>
 					</section>
 					<section>
-					create git ignore file
-					<pre><code data-trim data-noescape>
- 					~/presentation $ touch .gitignore
- 					</code></pre>
- 					check status of repository
- 					<pre><code data-trim data-noescape class="bash">
- 				~/presentation $ git status
-					On branch master
-					Initial commit
-					Untracked files:
-					(use "git add <file>..." to include in what will be committed)
-					.gitignore
-					nothing added to commit but untracked files present (use "git add" to track)
-					~/presentation $ git add .gitignore
-					~/presentation $ git commit -m "Initial commit with .gitignore file"
-					[master (root-commit) d12a8a1] Initial commit with .gitignore file
-					1 file changed, 0 insertions(+), 0 deletions(-)
-					create mode 100644 .gitignore
-					~/presentation (master) $
-					</code></pre>
+						create .gitignore file
+						<pre>
+							<code data-trim data-noescape>
+	 							~/presentation $ touch .gitignore
+	 						</code>
+	 					</pre>
+	 					check status of repository
+	 					<pre>
+	 						<code data-trim data-noescape class="bash">
+	 					~/presentation $ git status
+							On branch master
+							Initial commit
+							Untracked files:
+							(use "git add <file>..." to include in what will be committed)
+							.gitignore
+							nothing added to commit but untracked files present (use "git add" to track)
+							</code>
+						</pre>
+					</section>
+					<section>
+						add .gitignore to existing repository
+						<pre>
+							<code data-trim data-noescape class="bash">
+								~/presentation $ git add .gitignore
+								~/presentation $ git commit -m "Initial commit with .gitignore file"
+								[master (root-commit) d12a8a1] Initial commit with .gitignore file
+								1 file changed, 0 insertions(+), 0 deletions(-)
+								create mode 100644 .gitignore
+							</code>
+						</pre>
+					</section>
+					<section>
+						check logs in repository
+						<pre>
+							<code data-trim data-noescape  class="bash">
+							~/presentation (master) $ git log
+							commit d12a8a1ed12c6f9615eed96caa54dec5d4b7e4e7
+							Author: jedrzej <jedrzej@szczepaniak.com>
+							Date:   Thu Feb 9 21:47:11 2017 +0100
+
+							Initial commit with .gitignore file
+
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section >
+					<section>
+						<h4>Let's create remote repository</h4>
+						<h4>on local machine just for sake of this presentation</h4>
+						<p>because it is not really important, wheter it sits on github.com, gitlab.com, bitbucket.com, or in another directory on local machine</p>
+					</section>
+					<section>
+						let's create new directory and go to this directory.
+						<pre>
+							<code data-trim data-noescape  class="bash">
+							~ $ mkdir presentation-remote
+							~ $ cd presentation-remote
+							</code>
+						</pre>
+					</section>
+					<section>
+						Now we will create <mark>bare repository</mark>.
+						Bare repository does not have checked out working tree, which means that in this repository, we don't have any source code. We have only the state of git repository.
+						<pre>
+							<code data-trim data-noescape  class="bash">
+							~/presentation-remote $ git init --bare
+							Initialized empty Git repository in /home/jedrzej/presentation-remote/
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>content of bare repository is different than content of regular repository.</p>
+						<p>There is no .git directory, all of the informations are kept in special directories</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation-remote $ ls -a
+							.  ..  branches  config  description  HEAD  hooks  info  objects  refs
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h4>Note!</h4>
+						<p>Normally we work with non-bare repositories. They have source code in them, and .git directory which keeps all the git related information</p>
+						<p>In bare repositories we don't have source code. They exist to put them on the server when you don't use any public repository.</p>
 					</section>
 				</section>
 				<section>
