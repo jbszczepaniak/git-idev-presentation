@@ -164,13 +164,141 @@
 						</pre>
 					</section>
 					<section>
+						<p>last one step, we should tell our local repository about remote repository</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git remote add origin ../presentation-remote/
+							</code>
+						</pre>
+						<p>some verification</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git remote -vvv
+							origin	../presentation-remote/ (fetch)
+							origin	../presentation-remote/ (push)
+							</code>
+						</pre>
+						-vvv means be as verbose as you can.
+					</section>
+					<section>
 						<h4>Note!</h4>
 						<p>Normally we work with non-bare repositories. They have source code in them, and .git directory which keeps all the git related information</p>
 						<p>In bare repositories we don't have source code. They exist to put them on the server when you don't use any public repository.</p>
 					</section>
 				</section>
 				<section>
+					<section>
+						let's create new branch
+					</section>
+					<section>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git checkout -b "create-readme"
+							Switched to a new branch 'create-readme'
+							</code>
+						</pre>
+						equivalent version of the same output would be
+						<pre>
+							<code data-trim data-noescape  class="bash">
+							~/presentation (master) $ git branch create-readme
+							~/presentation (master) $ git checkout create-readme
+							Switched to branch 'create-readme'
+							</code>
+						</pre>
+					</section>
+					<section>
+						let's create readme
+						<pre>
+							<code data-trim data-noescape  class="bash">
+							~/presentation (create-readme) $ touch README.md
+							~/presentation (create-readme) $ echo "This is readme.md" > README.md
+							</code>
+						</pre>
+						add it to repository
+						<pre>
+							<code data-trim data-noescape  class="bash">
+							~/presentation (create-readme) $ git add README.md
+							~/presentation (create-readme) $ git status
+							On branch create-readme
+							Changes to be committed:
+							  (use "git reset HEAD <file>..." to unstage)
 
+								new file:   README.md
+							</code>
+						</pre>
+					</section>
+					<section>
+						and commit it
+						<pre>
+							<code data-trim data-noescape  class="bash">
+							~/presentation (create-readme) $ git commit -m "Create readme file"
+							[create-readme f8e6e63] Create readme file
+							 1 file changed, 1 insertion(+)
+							 create mode 100644 README.md
+							</code>
+						</pre>
+					</section>
+					<section>
+						now we want to go back to master branch, and merge changes from create-readme branch
+						<pre>
+							<code data-trim data-noescape  class="bash">
+							~/presentation (create-readme) $ git checkout master
+							Switched to branch 'master'
+							Your branch is up-to-date with 'origin/master'.
+							~/presentation (master) $ git merge create-readme
+							Updating d12a8a1..f8e6e63
+							Fast-forward
+							 README.md | 1 +
+							 1 file changed, 1 insertion(+)
+							 create mode 100644 README.md
+							</code>
+						</pre>
+					</section>
+					<section>
+						let's push those changes to remote
+						<pre>
+							<code data-trim data-noescape  class="bash">
+							~/presentation (master) $ git push
+							Counting objects: 6, done.
+							Delta compression using up to 4 threads.
+							Compressing objects: 100% (3/3), done.
+							Writing objects: 100% (6/6), 493 bytes | 0 bytes/s, done.
+							Total 6 (delta 0), reused 0 (delta 0)
+							To ../presentation-remote/
+							 * [new branch]      master -> master
+							</code>
+						</pre>
+					</section>
+					<section>
+						suddenly, remote repository knows about new branch - master, because we pushed it to remote.
+						<pre>
+							<code data-trim data-noescape  class="bash">
+							~/presentation-remote $ git branch
+							* master
+							</code>
+						</pre>
+					</section>
+					<section>
+						From perspective of local repository, the remote repository is called origin. It is a convention. It could have any other name, we just explicitly told that we want to name it origin via
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git remote add origin ../presentation-remote/
+							</code>
+						</pre>
+						That is why from local perspective, the remote branch master is <mark>origin/master</mark>
+						</section>
+						<section>
+							now we decided that we don't need create-readme branch anymore
+							to remove local branch we run;
+							<pre>
+								<code data-trim data-noescape  class="hljs">
+								~/presentation (master) $ git branch -d create-readme
+								Deleted branch create-readme (was f8e6e63).
+								</code>
+							</pre>
+
+						</section>
+					</section>
 				</section>
 				<section data-background="giphy.gif">
 				</section>
