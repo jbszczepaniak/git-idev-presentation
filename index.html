@@ -388,6 +388,107 @@
 							</pre>
 						</section>
 					</section>
+
+				<section>
+					<section>
+						rebasing
+					</section>
+					<section>
+						we create locally new branch called statistics, and commit some file in it
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git checkout -b statistics
+							Switched to a new branch 'statistics'
+							~/presentation (statistics) $ echo "Statistics code" > stats.c
+							~/presentation (statistics) $ git add stats.c
+							~/presentation (statistics) $ git commit -m "core statistics file"
+							[statistics 38a45e9] core statistics file
+							 1 file changed, 1 insertion(+)
+							 create mode 100644 stats.c
+							</code>
+						</pre>
+					</section>
+					<section>
+						then we go back to master and change something in README.md
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (statistics) $ git checkout master
+							Switched to branch 'master'
+							Your branch is up-to-date with 'origin/master'.
+							~/presentation (master) $ echo "new line in readme" >> README.md
+							~/presentation (master) $ git add README.md
+							~/presentation (master) $ git commit -m "Readme update"
+							[master d672e93] Readme update
+							 1 file changed, 1 insertion(+)
+							</code>
+						</pre>
+					</section>
+					<section>
+						now our repository looks like this:
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+								~/presentation (master) $ git lg
+								* d672e93 - (2 minutes ago) Readme update - jedrzej (HEAD -> master)
+								| * 38a45e9 - (5 minutes ago) core statistics file - jedrzej (statistics)
+								|/
+								* f8e6e63 - (2 days ago) Create readme file - jedrzej (origin/master)
+								* d12a8a1 - (4 days ago) Initial commit with .gitignore file - jedrzej
+							</code>
+						</pre>
+						for graph git log Google something like "pretty git log"
+					</section>
+					<section>
+						now if we want to have changes from statistics branch in master branch we can do merge.
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							(f8e6e63)------(d672e93)
+								\
+								 \
+								  \(38a45e9)
+							</code>
+						</pre>
+						master branch points to d672e93, and statistics points to 38a45e9. Merge means that git will take common ancestor of both branches (f8e6e63) and will do so called three-way merge, creating new  merge commit
+					</section>
+					<section>
+						We merge:
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git merge statistics
+							Merge made by the 'recursive' strategy.
+							 stats.c | 1 +
+							 1 file changed, 1 insertion(+)
+							 create mode 100644 stats.c
+							</code>
+						</pre>
+						In effect git created merge commit (4491d47):
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git lg
+							*   4491d47 - (2 minutes ago) Merge branch 'statistics' - jedrzej (HEAD -> master)
+							|\
+							| * 38a45e9 - (17 minutes ago) core statistics file - jedrzej (statistics)
+							* | d672e93 - (14 minutes ago) Readme update - jedrzej
+							|/
+							* f8e6e63 - (2 days ago) Create readme file - jedrzej (origin/master)
+							* d12a8a1 - (4 days ago) Initial commit with .gitignore file - jedrzej
+							</code>
+						</pre>
+					</section>
+					<section>
+						let's revert merge by going 1 commit back:
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git reset --hard HEAD~1
+							HEAD is now at d672e93 Readme update
+							jedrzej@jedrzej-UX303LB ~/presentation (master) $ git lg
+							* d672e93 - (20 minutes ago) Readme update - jedrzej (HEAD -> master)
+							| * 38a45e9 - (23 minutes ago) core statistics file - jedrzej (statistics)
+							|/
+							* f8e6e63 - (2 days ago) Create readme file - jedrzej (origin/master)
+							* d12a8a1 - (4 days ago) Initial commit with .gitignore file - jedrzej
+							</code>
+						</pre>
+					</section>
 				</section>
 				<section data-background="giphy.gif">
 				</section>
