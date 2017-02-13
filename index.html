@@ -170,7 +170,16 @@
 							~/presentation (master) $ git remote add origin ../presentation-remote/
 							</code>
 						</pre>
-						<p>some verification</p>
+						<p>and that we want our local master branch to track remote master branch</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git branch --set-upstream-to=origin/master master
+							Branch master set up to track remote branch master from origin.
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>we can do some verification</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
 							~/presentation (master) $ git remote -vvv
@@ -179,6 +188,23 @@
 							</code>
 						</pre>
 						-vvv means be as verbose as you can.
+
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							jedrzej@jedrzej-UX303LB ~/presentation (master) $ git remote show origin
+							* remote origin
+							  Fetch URL: ../presentation-remote/
+							  Push  URL: ../presentation-remote/
+							  HEAD branch: master
+							  Remote branches:
+							    master            tracked
+							  Local branch configured for 'git pull':
+							    master merges with remote master
+							  Local ref configured for 'git push':
+							    master pushes to master (up to date)
+							</code>
+						</pre>
+
 					</section>
 					<section>
 						<h4>Note!</h4>
@@ -288,15 +314,78 @@
 						That is why from local perspective, the remote branch master is <mark>origin/master</mark>
 						</section>
 						<section>
+							<p>We use origin by default always when we clone repository.</p>
+							<p>git assumes that we will want refer to remote repository in the future and it automatically sets remote repository for us, and calls it <mark>origin</mark>.</p>
+						</section>
+						<section>
+							<p>let's check</p>
+							<pre>
+								<code data-trim data-noescape  class="bash">
+								~ $ git clone git@github.com:jedruniu/git-idev-presentation.git
+								Cloning into 'git-idev-presentation'...
+								remote: Counting objects: 150, done.
+								remote: Compressing objects: 100% (113/113), done.
+								remote: Total 150 (delta 35), reused 145 (delta 30), pack-reused 0
+								Receiving objects: 100% (150/150), 2.66 MiB | 1.19 MiB/s, done.
+								Resolving deltas: 100% (35/35), done.
+								Checking connectivity... done.
+								~ $ cd git-idev-presentation/
+								~/git-idev-presentation (master) $ git remote -vvv
+								origin	git@github.com:jedruniu/git-idev-presentation.git (fetch)
+								origin	git@github.com:jedruniu/git-idev-presentation.git (push)
+								~/git-idev-presentation (master) $
+								</code>
+							</pre>
+						</section>
+						<section>
 							now we decided that we don't need create-readme branch anymore
-							to remove local branch we run;
+							to remove local branch we run
 							<pre>
 								<code data-trim data-noescape  class="hljs">
 								~/presentation (master) $ git branch -d create-readme
 								Deleted branch create-readme (was f8e6e63).
 								</code>
 							</pre>
-
+						</section>
+						<section>
+							someone creates branch in remote repository
+							<pre>
+								<code data-trim data-noescape  class="hljs">
+								~/presentation-remote (master) $ git branch new-functionality
+								~/presentation-remote (master) $ git branch
+								* master
+								  new-functionality
+								</code>
+							</pre>
+						</section>
+						<section>
+							we do git pull do make sure that our local repository is up to date
+							<pre>
+								<code data-trim data-noescape  class="hljs">
+								~/presentation (master) $ git pull
+								From ../presentation-remote
+								 * [new branch]      new-functionality -> origin/new-functionality
+								Already up-to-date.
+								</code>
+							</pre>
+							and we figure out that new branch was added remotely.
+						</section>
+						<section>
+							But we don't like this branch very much and we would like to deleted it. We can.
+							<pre>
+								<code data-trim data-noescape  class="hljs">
+								~/presentation (master) $ git push origin :new-functionality
+								To ../presentation-remote/
+								 - [deleted]         new-functionality
+								</code>
+							</pre>
+							Now on the remote repository new-functionality branch is gone
+							<pre>
+								<code data-trim data-noescape  class="hljs">
+								~/presentation-remote (master) $ git branch
+								* master
+								</code>
+							</pre>
 						</section>
 					</section>
 				</section>

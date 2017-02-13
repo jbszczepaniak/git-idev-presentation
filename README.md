@@ -7,3 +7,9 @@ Content:
 2. Create new repository
 
 3. Create remote bare repository
+
+4. What is origin ?
+
+5. Remove local branch
+
+6. Remove remote branch
