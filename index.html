@@ -447,7 +447,7 @@
 								  \(38a45e9)
 							</code>
 						</pre>
-						master branch points to d672e93, and statistics points to 38a45e9. Merge means that git will take common ancestor of both branches (f8e6e63) and will do so called three-way merge, creating new  merge commit
+						master branch points to d672e93, and statistics points to 38a45e9. Merge means that git will take common ancestor of both branches (f8e6e63) and will perform so called three-way merge, creating new  merge commit
 					</section>
 					<section>
 						We merge:
@@ -488,6 +488,108 @@
 							* d12a8a1 - (4 days ago) Initial commit with .gitignore file - jedrzej
 							</code>
 						</pre>
+						By the way: HEAD is a pointer that points to most recent commit in current branch.
+					</section>
+					<section>
+						We rebase, which means that we change the base of the statistics branch from previous one to the most recent commit of master
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git checkout statistics
+							Switched to branch 'statistics'
+							~/presentation (statistics) $ git rebase master
+							First, rewinding head to replay your work on top of it...
+							Applying: core statistics file
+							</code>
+						</pre>
+					</section>
+					<section>
+						Now our repository looks like this:
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (statistics) $ git lg
+							* 1069d35 - (2 days ago) core statistics file - jedrzej (HEAD -> statistics)
+							* d672e93 - (2 days ago) Readme update - jedrzej (master)
+							* f8e6e63 - (4 days ago) Create readme file - jedrzej (origin/master)
+							* d12a8a1 - (6 days ago) Initial commit with .gitignore file - jedrzej
+							</code>
+						</pre>
+						Commit d672e93 became a base for branch statistics. It is worth to note that commit with message
+						"core statistics file" changed it's hash from 38a45e9 to 1069d35. Which means that we've altered history of repository.
+					</section>
+					<section>
+						We moved from:
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							(f8e6e63)------(d672e93)
+								\
+								 \
+								  \(38a45e9)
+							</code>
+						</pre>
+						to:
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							(f8e6e63)------(d672e93)------(1069d35)
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>The history became linear. This might be useful for situations where we are doing something in branch statistics, and simultaneously our colleague is changing master branch in a way that affects our work. And we want to be up to date with his work.</p>
+						<p>We can do git pull & git merge couple of times, but then, our history will be full of merge commits that make no sense for external reader</p>
+					</section>
+					<section>
+						Let's do rebase example
+					</section>
+					<section>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+								(A)------(B)------(C)------(D)	<-- master
+								 \
+								  \
+								   \(E)------(F)------(G)	<-- feature-branch
+							</code>
+						</pre>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (statistics) $ git rebase master
+							</code>
+						</pre>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+								(A)----(B)----(C)----(D)	<-- master
+										      \
+										       \
+										        \(E*)----(F*)----(G*) <-- feature-branch
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>Always when we try to push local changes to remote repository but git says that we can'y because on the remote there are changes that we don't have yet.</p>
+						<p>what do we do then?</p>
+					</section>
+					<section>
+						<p>We do git pull which actually is git fetch + git merge</p>
+						<p>which means that git will take most recent commit of fetched changes, most recent commit of our work, last common commit of those two "branches", and will perform three-way merge, which will result in creating merge commit.</p>
+					</section>
+					<section>
+						The question is:
+						<p>Do we really need commits for each such situation?</p>
+					</section>
+					<section>
+						<h1>No</h1>
+						<p>what we can do ?</p>
+						<p>rebase!</p>
+					</section>
+					<section>To ilustrate this situation we will:
+						<ol>
+							<li>create another local repository
+							<li>clone remote repository
+							<li>commit some changes in master branch
+							<li>switch back to previous local repository
+							<li>commit some changes
+							<li>try to push them (they will be rejected)
+							<li>REBASE!!!!!
+						</ol>
 					</section>
 				</section>
 				<section data-background="giphy.gif">
