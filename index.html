@@ -929,7 +929,139 @@
 						<section>
 							<h1>Fixing things</h1>
 						</section>
+						<section>
+							<h2>git stash</h2>
+							<p>Useful for scenario:</p>
+							<ol>
+								<li>Developer is working on given feature (on dedicated branch)</li>
+								<li>Manager comes and says: "dear developer, please change fonts on production branch"</li>
+								<li>Dev stashes changes</li>
+								<li>Dev checkouts on another branch</li>
+								<li>Dev changes font, commits a change, pushes it to the repo</li>
+								<li>Dev then checkouts back to feature branch, gets his changes from stash</li>
+								<li>Dev is working on given feature again</li>
+							</ol>
+						</section>
+						<section>
+							<h2>git stash</h2>
+							<pre>
+                            	<code data-trim data-noescape  class="hljs">
+									~/presentation (master) $ git checkout -b new-feature
+									Switched to a new branch 'new-feature'
+									~/presentation (new-feature) $ touch functions.c
+									~/presentation (new-feature) $ echo  "#include <stdio.h>" > functions.c
+									~/presentation (new-feature) $ git add .
+									~/presentation (new-feature) $ git status
+									On branch new-feature
+									Changes to be committed:
+									  (use "git reset HEAD <file>..." to unstage)
+
+										new file:   functions.c
+									~/presentation (new-feature) $ git stash
+									Saved working directory and index state WIP on new-feature: a07557e Contributors file
+									HEAD is now at a07557e Contributors file
+								</code>
+							</pre>
+						</section>
+						<section>
+							<h2>git stash</h2>
+							<pre>
+                            	<code data-trim data-noescape  class="hljs">
+									~/presentation (new-feature) $ git checkout master
+									~/presentation (master) $ echo "another line" >> README.md
+									~/presentation (master) $ git add .
+									~/presentation (master) $ git commit -m "Update README"
+									[master 90792a8] Update README
+		 							1 file changed, 1 insertion(+)
+		 							~/presentation (master) $ git push
+		 							Counting objects: 3, done.
+									Delta compression using up to 4 threads.
+									Compressing objects: 100% (3/3), done.
+									Writing objects: 100% (3/3), 303 bytes | 0 bytes/s, done.
+									Total 3 (delta 1), reused 0 (delta 0)
+									To ../presentation-remote/
+									   a07557e..90792a8  master -> master
+								</code>
+							</pre>
+						</section>
+						<section>
+							<h2>git stash</h2>
+							<pre>
+                            	<code data-trim data-noescape  class="hljs">
+									~/presentation (master) $ git checkout new-feature
+									~/presentation (new-feature) $ git stash pop
+									On branch new-feature
+									Changes to be committed:
+									  (use "git reset HEAD <file>..." to unstage)
+
+										new file:   functions.c
+
+									Dropped refs/stash@{0} (c46bc61e108fd40d88653b42e359343169dfc8b4)
+								</code>
+							</pre>
+						</section>
+						<section>
+							<p>git stash works just like a stack, we can push changes on top of it, and pop them when necessary</p>
+							<pre>
+								<code data-trim data-noescape  class="hljs">
+								~/presentation (new-feature) $ git status
+								On branch new-feature
+								Changes to be committed:
+								  (use "git reset HEAD <file>..." to unstage)
+
+									new file:   functions.c
+								~/presentation (new-feature) $ git stash
+								Saved working directory and index state WIP on new-feature: a07557e Contributors file
+								HEAD is now at a07557e Contributors file
+								~/presentation (new-feature) $ echo "#include<stdlib.h>" >> utils.c
+								~/presentation (new-feature) $ git add utils.c
+								~/presentation (new-feature) $ git stash
+								~/presentation (new-feature) $ git stash list
+								stash@{0}: WIP on new-feature: a07557e Contributors file
+								stash@{1}: WIP on new-feature: a07557e Contributors file
+								</code>
+							</pre>
+								<p>We have on stash stack two elements, the latest at index 0</p>
+						</section>
+						<section>
+								<p>Checking what changes are on which element of stack is done with:</p>
+								<pre>
+                            		<code data-trim data-noescape  class="hljs">
+									~/presentation (new-feature) $ git stash show -p stash@{1}
+									diff --git a/functions.c b/functions.c
+									new file mode 100644
+									index 0000000..53c5fdf
+									--- /dev/null
+									+++ b/functions.c
+									@@ -0,0 +1 @@
+									+#include <stdio.h>
+									</code>
+								</pre>
+								<p>once again, git stash is a stack, with the most recent element at index 0</p>
+							</code>
+						</section>
+						<section>
+							<pre>
+                            	<code data-trim data-noescape  class="hljs">
+							~/presentation (new-feature) $ git stash pop
+							On branch new-feature
+							Changes to be committed:
+							  (use "git reset HEAD <file>..." to unstage)
+
+								new file:   utils.c
+							Dropped refs/stash@{0} (9abb1165605d667dd569651670a8dfffbdda8153)
+							~/presentation (new-feature) $ git stash pop
+							On branch new-feature
+							Changes to be committed:
+							  (use "git reset HEAD <file>..." to unstage)
+
+								new file:   functions.c
+								new file:   utils.c
+							Dropped refs/stash@{0} (435763c5d1fbd8c8caf3cbeedf2f61184c7ceed3)
+							</code>
+						</pre>
 					</section>
+				</section>
 				<section>
 					<h4>SUMMARY</h4>
 					<ul>
