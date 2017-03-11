@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="author" content="Jędrzej Szczepaniak">
 
 		<title>git presentation</title>
 		<link rel="shortcut icon" href="git_logo.png">
@@ -27,7 +28,9 @@
 			<div class="slides">
 				<section>
 				<h1>About git</h1>
-				<h2 class="fragment">practical point of view</h2>
+				<h2>practical point of view</h2>
+				<p>Jędrzej Szczepaniak, Poznań 2017</p>
+
 				</section>
 				<section>
 					<section>
@@ -94,7 +97,7 @@
 							On branch master
 							Initial commit
 							Untracked files:
-							(use "git add <file>..." to include in what will be committed)
+							(use "git add file..." to include in what will be committed)
 							.gitignore
 							nothing added to commit but untracked files present (use "git add" to track)
 							</code>
@@ -244,7 +247,7 @@
 							~/presentation (create-readme) $ git status
 							On branch create-readme
 							Changes to be committed:
-							  (use "git reset HEAD <file>..." to unstage)
+							  (use "git reset HEAD file..." to unstage)
 
 								new file:   README.md
 							</code>
@@ -727,7 +730,7 @@
                         </pre>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                            	jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (statistics) $ git lg
+                            	~/presentation (statistics) $ git lg
 								* a26360f - (5 minutes ago) core statistics file - jedrzej (HEAD -> statistics)
 								* d18e0d8 - (5 minutes ago) Readme update - jedrzej (origin/master, master)
 								* d635896 - (81 seconds ago) License file - jedrzej
@@ -740,16 +743,16 @@
                     	Now we can merge statistics into master, there is not diverged branches, so merge will be of type "fast-forward"
                     	<pre>
                             <code data-trim data-noescape  class="hljs">
-                            	~/one-more-time/presentation (statistics) $ git checkout master
+                            	~/presentation (statistics) $ git checkout master
 								Switched to branch 'master'
 								Your branch is up-to-date with 'origin/master'.
-								jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (master) $ git merge statistics
+								~/presentation (master) $ git merge statistics
 								Updating d18e0d8..a26360f
 								Fast-forward
 								 stats.c | 1 +
 								 1 file changed, 1 insertion(+)
 								 create mode 100644 stats.c
-								jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (master) $ git lg
+								~/presentation (master) $ git lg
 								* a26360f - (3 hours ago) core statistics file - jedrzej (HEAD -> master, statistics)
 								* d18e0d8 - (3 hours ago) Readme update - jedrzej (origin/master)
 								* d635896 - (3 hours ago) License file - jedrzej
@@ -954,7 +957,7 @@
 									~/presentation (new-feature) $ git status
 									On branch new-feature
 									Changes to be committed:
-									  (use "git reset HEAD <file>..." to unstage)
+									  (use "git reset HEAD file..." to unstage)
 
 										new file:   functions.c
 									~/presentation (new-feature) $ git stash
@@ -992,7 +995,7 @@
 									~/presentation (new-feature) $ git stash pop
 									On branch new-feature
 									Changes to be committed:
-									  (use "git reset HEAD <file>..." to unstage)
+									  (use "git reset HEAD file..." to unstage)
 
 										new file:   functions.c
 
@@ -1007,7 +1010,7 @@
 								~/presentation (new-feature) $ git status
 								On branch new-feature
 								Changes to be committed:
-								  (use "git reset HEAD <file>..." to unstage)
+								  (use "git reset HEAD file..." to unstage)
 
 									new file:   functions.c
 								~/presentation (new-feature) $ git stash
@@ -1046,14 +1049,14 @@
 							~/presentation (new-feature) $ git stash pop
 							On branch new-feature
 							Changes to be committed:
-							  (use "git reset HEAD <file>..." to unstage)
+							  (use "git reset HEAD file..." to unstage)
 
 								new file:   utils.c
 							Dropped refs/stash@{0} (9abb1165605d667dd569651670a8dfffbdda8153)
 							~/presentation (new-feature) $ git stash pop
 							On branch new-feature
 							Changes to be committed:
-							  (use "git reset HEAD <file>..." to unstage)
+							  (use "git reset HEAD file..." to unstage)
 
 								new file:   functions.c
 								new file:   utils.c
@@ -1091,7 +1094,7 @@
 							<p>Step two - check hash of commit you want to move</p>
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-								jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (master) $ git log new-feature -1
+								~/presentation (master) $ git log new-feature -1
 								commit fe99004d790db12c0aa34b5c3e562cf7977041f8
 								Author: jedrzej <jbszczepaniak@gmail.com>
 								Date:   Sat Mar 11 09:27:32 2017 +0100
@@ -1105,7 +1108,7 @@
 						<p>Step three - pick the cherry</p>
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-									jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (master) $ git cherry-pick fe99004d790d
+									~/presentation (master) $ git cherry-pick fe99004d790d
 									[master 2e173df] Add new important files
 									 Date: Sat Mar 11 09:27:32 2017 +0100
 									 2 files changed, 2 insertions(+)
@@ -1119,7 +1122,7 @@
 						<p>As can be seen below <mark>cherry pick</mark> get changes from given commit and commits this changes with the same commit message (but different hash, because it is different commit) on current branch</p>
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-									jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (master) $ git lg | head -n 5
+									~/presentation (master) $ git lg | head -n 5
 									* 2e173df - (19 minutes ago) Add new important files - jedrzej (HEAD -> master)
 									* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
 									| * fe99004 - (19 minutes ago) Add new important files - jedrzej (new-feature)
@@ -1133,9 +1136,9 @@
 						<p>Step four - remove changes from new-feature branch</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-								jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (new-feature) $ git reset --hard HEAD~
+								~/presentation (new-feature) $ git reset --hard HEAD~
 								HEAD is now at a07557e Contributors file
-								jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (new-feature) $ git lg | -n 5
+								~/presentation (new-feature) $ git lg | -n 5
 								* 2e173df - (26 minutes ago) Add new important files - jedrzej (master)
 								* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
 								* a07557e - (3 weeks ago) Contributors file - jedrzej (HEAD -> new-feature, tag: v2)
@@ -1150,7 +1153,193 @@
 					</section>
 					<section>
 						<p>what git reset is not about</p>
-						<img src="reset.gif"  height="400" width="800">
+						<img src="reset.gif"  height="400" width="800" class="fragment">
+					</section>
+					<section>
+						<p>git reset modes are:</p>
+						<ul>
+							<li>--soft</li>
+							<li>--mixed (default)</li>
+							<li>--hard</li>
+							<li>--merge</li>
+							<li>--keep</li>
+						</ul>
+						<p class="fragment">we will briefly discuss first three methods</p>
+					</section>
+					<section>
+						<h4>Preliminary knowledge</h4>
+						<img src="areas.png">
+						<p><b>Staging area</b> is also known as: <b>index</b>, or <b>cache</b></p>
+					</section>
+					<section>
+						<h3>git reset --mixed </h3>
+						<p>resets HEAD to the specified commit and <mark>puts changes done after this specified commit in working directory</mark></p>
+						<p>How does the repo looks like ?</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git lg | head -n 2
+							* 2e173df - (7 hours ago) Add new important files - jedrzej (HEAD -> master)
+							* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
+
+							~/presentation (master) $ git status
+							On branch master
+							Your branch is ahead of 'origin/master' by 1 commit.
+							  (use "git push" to publish your local commits)
+							nothing to commit, working directory clean
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>git reset --mixed </h3>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git reset --mixed 90792a8
+							~/presentation (master) $ git status
+							On branch master
+							Your branch is up-to-date with 'origin/master'.
+							Untracked files:
+							  (use "git add file..." to include in what will be committed)
+
+								functions.c
+								utils.c
+
+							nothing added to commit but untracked files present (use "git add" to track)
+							~/presentation (master) $ git lg | head -n 2
+							* 90792a8 - (3 days ago) Update README - jedrzej (HEAD -> master, origin/master)
+							* a07557e - (3 weeks ago) Contributors file - jedrzej (tag: v2, new-feature)
+							</code>
+						</pre>
+						<p>Files functions.c and utils.c are untracked now, because they were created after commit with hash: 90792a8</p>
+					</section>
+					<section>
+						<h3>git reset --mixed </h3>
+						<p>Let's go back to prevoius state and introduce changes to existing file</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git add .
+							~/presentation (master) $ git commit -m "Add new important files"
+							[master 945257a] Add new important files
+							 2 files changed, 3 insertions(+)
+							 create mode 100644 functions.c
+							 create mode 100644 utils.c
+							</code>
+						</pre>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ echo "Build instructions:" >> README.md
+							~/presentation (master) $ git add README.md
+							~/presentation (master) $ git commit -m "Update README"
+							[master 188166b] Update README
+							 1 file changed, 1 insertion(+)
+							~/presentation (master) $ git lg | head -n 2
+							* 188166b - (5 seconds ago) Update README - jedrzej (HEAD -> master)
+							* 945257a - (47 seconds ago) Add new important files - jedrzej
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>git reset --mixed </h3>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git reset --mixed 945257a
+							Unstaged changes after reset:
+							M	README.md
+							~/presentation (master) $ git status
+							On branch master
+							Your branch is ahead of 'origin/master' by 1 commit.
+							  (use "git push" to publish your local commits)
+							Changes not staged for commit:
+							  (use "git add file..." to update what will be committed)
+							  (use "git checkout -- file..." to discard changes in working directory)
+
+								modified:   README.md
+
+							no changes added to commit (use "git add" and/or "git commit -a")
+							</code>
+						</pre>
+						<p>
+							Now changes are seen in <b>git status</b> as "not staged for commit", which also means that they are in working tree, but this team we reset to the point where README.md file was already known by git.
+						</p>
+					</section>
+					<section>
+						<h3>git reset --soft</h3>
+						<p>resets HEAD to the specified commit and <mark>puts changes done after this specified commit in staging area (a.k.a. index, or cache)</mark></p>
+						<p>How does the repo looks like ?</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+								~/presentation (master) $ git checkout . #Discards changes done to README
+								~/presentation (master) $ git lg | head -n 2
+								* 945257a - (11 minutes ago) Add new important files - jedrzej (HEAD -> master)
+								* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>git reset --soft</h3>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git reset --soft 90792a8
+							~/presentation (master) $ git status
+							On branch master
+							Your branch is up-to-date with 'origin/master'.
+							Changes to be committed:
+							  (use "git reset HEAD <file>..." to unstage)
+
+								new file:   functions.c
+								new file:   utils.c
+							</code>
+						</pre>
+						<p>After this reset files are in index, let's commit them again</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+								~/presentation (master) $ git commit -m "Add new important files"
+								[master cf6018c] Add new important files
+								 2 files changed, 3 insertions(+)
+								 create mode 100644 functions.c
+								 create mode 100644 utils.c
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>git reset --hard</h3>
+						<p>resets HEAD to the specified commit and <mark>discards changes done after this specified commit</mark></p>
+						<p>repo looks like this</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (master) $ git lg | head -n 2
+							* cf6018c - (3 minutes ago) Add new important files - jedrzej (HEAD -> master)
+							* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
+							</code>
+						</pre>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+								~/presentation (master) $ git reset --hard 90792a8
+								HEAD is now at 90792a8 Update README
+								jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (master) $ git status
+								On branch master
+								Your branch is up-to-date with 'origin/master'.
+								nothing to commit, working directory clean
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>git reset --hard</h3>
+						<p justify="allign">Changes are lost. There is hope however to recover from this thank to <b>git reflog</b>. Git reflog is a history of things we've done to our repository locally, and it is pruned after 90 days (by default). that is why we can recover from mistakes most of the time</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+								~/presentation (master) $ git reflog | head -n 5
+								90792a8 HEAD@{0}: reset: moving to 90792a8
+								cf6018c HEAD@{1}: commit: Add new important files
+								90792a8 HEAD@{2}: reset: moving to 90792a8
+								945257a HEAD@{3}: reset: moving to 945257a
+								188166b HEAD@{4}: commit: Update README
+								~/presentation (master) $ git reset --hard HEAD@{1}
+								HEAD is now at cf6018c Add new important files
+								~/presentation (master) $ git lg | head -2
+								* cf6018c - (11 minutes ago) Add new important files - jedrzej (HEAD -> master)
+								* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
+							</code>
+						</pre>
 					</section>
 				</section>
 				<section>
@@ -1159,11 +1348,15 @@
 						<li>branching</li>
 						<li>rebasing</li>
 						<li>tags</li>
+						<li>fixing things</li>
+							<ul>
+								<li>git stash</li>
+								<li>git cherry-pick</li>
+								<li>git reset</li>
+							</ul>
 					</ul>
 				</section>
-
 				<section data-background="giphy.gif">
-					<h1>END</h1>
 				</section>
 			</div>
 		</div>
