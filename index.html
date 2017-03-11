@@ -1060,6 +1060,97 @@
 							Dropped refs/stash@{0} (435763c5d1fbd8c8caf3cbeedf2f61184c7ceed3)
 							</code>
 						</pre>
+						<p>after two pops, stash stack is empty, and files came back to staging area (a.k.a. index)</p>
+					</section>
+					<section>
+						<p>we can commit those changes now. </p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+							~/presentation (new-feature) $ git commit -m "Add new important files"
+							[new-feature fe99004] Add new important files
+							 2 files changed, 2 insertions(+)
+							 create mode 100644 functions.c
+							 create mode 100644 utils.c
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>but wait.... we wanted to commit them in the master branch</p>
+					</section>
+					<section>
+						<h4>not a problem at all.</h4>
+
+							<p>Step one - checkout to desirable branch</p>
+							<pre>
+								<code data-trim data-noescape  class="hljs">
+								~/presentation (new-feature) $ git checkout master
+								Switched to branch 'master'
+								Your branch is up-to-date with 'origin/master'.
+								</code>
+							</pre>
+							<p>Step two - check hash of commit you want to move</p>
+							<pre>
+								<code data-trim data-noescape  class="hljs">
+								jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (master) $ git log new-feature -1
+								commit fe99004d790db12c0aa34b5c3e562cf7977041f8
+								Author: jedrzej <jbszczepaniak@gmail.com>
+								Date:   Sat Mar 11 09:27:32 2017 +0100
+
+								Add new important files
+								</code>
+							</pre>
+							<p>This git log command says give me last commit from given branch by the way</p>
+					</section>
+					<section>
+						<p>Step three - pick the cherry</p>
+							<pre>
+								<code data-trim data-noescape  class="hljs">
+									jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (master) $ git cherry-pick fe99004d790d
+									[master 2e173df] Add new important files
+									 Date: Sat Mar 11 09:27:32 2017 +0100
+									 2 files changed, 2 insertions(+)
+									 create mode 100644 functions.c
+									 create mode 100644 utils.c
+								</code>
+							</pre>
+							<p>it is ok, to give just the beginning of hash.</p>
+					</section>
+					<section>
+						<p>As can be seen below <mark>cherry pick</mark> get changes from given commit and commits this changes with the same commit message (but different hash, because it is different commit) on current branch</p>
+							<pre>
+								<code data-trim data-noescape  class="hljs">
+									jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (master) $ git lg | head -n 5
+									* 2e173df - (19 minutes ago) Add new important files - jedrzej (HEAD -> master)
+									* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
+									| * fe99004 - (19 minutes ago) Add new important files - jedrzej (new-feature)
+									|/
+									* a07557e - (3 weeks ago) Contributors file - jedrzej (tag: v2)
+								</code>
+							</pre>
+							<p><mark>head -n 5</mark> says "i want only last 5 lines of output"</p>
+					</section>
+					<section>
+						<p>Step four - remove changes from new-feature branch</p>
+						<pre>
+							<code data-trim data-noescape  class="hljs">
+								jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (new-feature) $ git reset --hard HEAD~
+								HEAD is now at a07557e Contributors file
+								jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (new-feature) $ git lg | -n 5
+								* 2e173df - (26 minutes ago) Add new important files - jedrzej (master)
+								* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
+								* a07557e - (3 weeks ago) Contributors file - jedrzej (HEAD -> new-feature, tag: v2)
+								* a26360f - (3 weeks ago) core statistics file - jedrzej (tag: v1, statistics)
+								* d18e0d8 - (3 weeks ago) Readme update - jedrzej
+							</code>
+						</pre>
+						<p>DONE.</p>
+					</section>
+					<section >
+						<h1>GIT RESET DEMISTIFICATION</h1>
+					</section>
+					<section>
+						<p>what git reset is not about</p>
+						<img src="reset.gif"  height="400" width="800">
 					</section>
 				</section>
 				<section>
