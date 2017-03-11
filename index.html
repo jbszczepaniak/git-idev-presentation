@@ -38,7 +38,7 @@
 						<h3>Which I think is useful</h3>
 					</section>
 					<section>
-						<p>add following to your ~/.bashrc file</p>
+						<p>Add a snippet following to your ~/.bashrc file:</p>
 							<pre><code data-trim data-noescape class="bash">
 								parse_git_branch()
 								{git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'}
@@ -46,7 +46,7 @@
 							</code></pre>
 					</section>
 					<section>
-						and your terminal prompt will change from:
+						And your terminal prompt will change from:
 						<pre><code data-trim data-noescape>
 						<b>$</b>
 						</code></pre>
@@ -56,10 +56,10 @@
 						</code></pre>
 					</section>
 					<section>
-						good practise in local environment !
+						Good practise in local environment !
 					</section>
 					<section>
-						and must have on production server !
+						And must have on production server !
 					</section>
 				</section>
 				<section>
@@ -75,7 +75,7 @@
 								<b>~ $ cd presentation/</b>
  							</code>
  						</pre>
- 						initialize empty git repository
+ 						Initialize an empty git repository.
  						<pre>
  							<code data-trim data-noescape class="bash">
 								<b>~/presentation $ git init</b>
@@ -84,13 +84,13 @@
 						</pre>
 					</section>
 					<section>
-						create .gitignore file
+						Create .gitignore file.
 						<pre>
 							<code data-trim data-noescape>
 	 							<b>~/presentation $ touch .gitignore</b>
 	 						</code>
 	 					</pre>
-	 					check status of repository
+	 					Check status of repository.
 	 					<pre>
 	 						<code data-trim data-noescape class="bash">
 							<b>~/presentation $ git status</b>
@@ -104,7 +104,7 @@
 						</pre>
 					</section>
 					<section>
-						add .gitignore to existing repository
+						Add .gitignore to existing repository.
 						<pre>
 							<code data-trim data-noescape class="bash">
 								<b>~/presentation $ git add .gitignore</b>
@@ -116,7 +116,7 @@
 						</pre>
 					</section>
 					<section>
-						check logs in repository
+						Check logs in repository.
 						<pre>
 							<code data-trim data-noescape  class="bash">
 							<b>~/presentation (master) $ git log</b>
@@ -131,12 +131,12 @@
 				</section>
 				<section >
 					<section>
-						<h2>Let's create remote repository</h2>
-						<h4>on local machine just for sake of this presentation</h4>
-						<p>because it is not really important, wheter it sits on github.com, gitlab.com, bitbucket.com, or in another directory on local machine</p>
+						<h2>Let's create new remote repository</h2>
+						<h4>on a local machine just for sake of this presentation</h4>
+						<p>It is not really important, whether it resides on github.com, gitlab.com, bitbucket.com, or in another directory on local machine</p>
 					</section>
 					<section>
-						let's create new directory and go to this directory.
+						Let's create new directory and go to this directory.
 						<pre>
 							<code data-trim data-noescape  class="bash">
 							<b>~ $ mkdir presentation-remote</b>
@@ -164,13 +164,13 @@
 						</pre>
 					</section>
 					<section>
-						<p>Last one step, we should tell our local repository about remote repository</p>
+						<p>One last step, we should tell our local repository about remote repository.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
 							<b>~/presentation (master) $ git remote add origin ../presentation-remote/</b>
 							</code>
 						</pre>
-						<p>and that we want our local master branch to track remote master branch</p>
+						<p>And that we want our local master branch to track remote master branch.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
 							<b>~/presentation (master) $ git push --set-upstream origin master</b>
@@ -178,7 +178,7 @@
 						</pre>
 					</section>
 					<section>
-						<p>We can do some verification</p>
+						<p>We can do some verification:</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
 							<b>~/presentation (master) $ git remote -vvv</b>
@@ -206,7 +206,7 @@
 					</section>
 					<section>
 						<h4>Note!</h4>
-						<p>Normally we work with non-bare repositories. They have source code in them, and .git directory which keeps all the git related information</p>
+						<p>Normally we work with non-bare repositories. They have source code in them, and .git directory which keeps all the git related information.</p>
 						<p>In bare repositories we don't have source code. They exist to put them on the server when you don't use any public repository.</p>
 					</section>
 				</section>
@@ -388,10 +388,10 @@
 					</section>
 				<section>
 					<section>
-						<h1>rebasing</h1>
+						<h1>Rebasing</h1>
 					</section>
 					<section>
-						<p>We create locally new branch called statistics, and commit some file in it</p>
+						<p>We create locally new branch called statistics, and commit some file in it.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
 							<b>~/presentation (master) $ git checkout -b statistics</b>
@@ -893,7 +893,7 @@
 						<p>What is log on remote ?</p>
 						<pre>
                             <code data-trim data-noescape  class="hljs">
-								~/presentation-remote (master) $ git lg
+								<b>~/presentation-remote (master) $ git lg</b>
 								* a07557e - (2 minutes ago) Contributors file - jedrzej (HEAD -> master)
 								* a26360f - (3 hours ago) core statistics file - jedrzej
 								* d18e0d8 - (3 hours ago) Readme update - jedrzej
@@ -902,23 +902,23 @@
 								* 95f2f4a - (4 hours ago) Initial commit with .gitignore file - jedrzej
                             </code>
                         </pre>
-                        remote repository can't see any of our tags. This is valid. By design tags must be explicitly pushed
+                        Remote repository can't see any of our tags. This is valid. By design tags must be explicitly pushed.
 					</section>
 					<section>
-						We can push tags one by one with <b>git push origin tag_name</b> Or we can push them all at once
+						We can push tags one by one with <b>git push origin tag_name</b>, or we can push them all at once.
 						<pre>
                             <code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git push --tags
+								<b>~/presentation (master) $ git push --tags</b>
 								Total 0 (delta 0), reused 0 (delta 0)
 								To ../presentation-remote/
 								 * [new tag]         v1 -> v1
 								 * [new tag]         v2 -> v2
                             </code>
                         </pre>
-                        Now in the remote repository, we can browse all tags defines locally
+                        Now in the remote repository, we can browse all tags defined locally.
 						<pre>
                             <code data-trim data-noescape  class="hljs">
-		                        ~/presentation-remote (master) $ git tag
+								<b>~/presentation-remote (master) $ git tag</b>
 								v1
 								v2
                             </code>
@@ -934,33 +934,33 @@
 							<h2>git stash</h2>
 							<p>Useful for scenario:</p>
 							<ol>
-								<li>Developer is working on given feature (on dedicated branch)</li>
-								<li>Manager comes and says: "dear developer, please change fonts on production branch"</li>
-								<li>Dev stashes changes</li>
-								<li>Dev checkouts on another branch</li>
-								<li>Dev changes font, commits a change, pushes it to the repo</li>
-								<li>Dev then checkouts back to feature branch, gets his changes from stash</li>
-								<li>Dev is working on given feature again</li>
+								<li class="fragment">developer is working on given feature (on dedicated branch), </li>
+								<li class="fragment">manager comes and says: "dear developer, please change fonts on production branch",</li>
+								<li class="fragment">dev stashes changes,</li>
+								<li class="fragment">dev checkouts on another branch,</li>
+								<li class="fragment">dev changes font, commits a change, pushes it to the repo,</li>
+								<li class="fragment">dev then checkouts back to feature branch, gets his changes from stash,</li>
+								<li class="fragment">dev is working on given feature again.</li>
 							</ol>
 						</section>
 						<section>
 							<h2>git stash</h2>
 							<pre>
                             	<code data-trim data-noescape  class="hljs">
-									~/presentation (master) $ git checkout -b new-feature
-									Switched to a new branch 'new-feature'
-									~/presentation (new-feature) $ touch functions.c
-									~/presentation (new-feature) $ echo  "#include <stdio.h>" > functions.c
-									~/presentation (new-feature) $ git add .
-									~/presentation (new-feature) $ git status
-									On branch new-feature
-									Changes to be committed:
-									  (use "git reset HEAD file..." to unstage)
+								<b>~/presentation (master) $ git checkout -b new-feature</b>
+								Switched to a new branch 'new-feature'
+								<b>~/presentation (new-feature) $ touch functions.c</b>
+								<b>~/presentation (new-feature) $ echo  "#include < stdio.h>" > functions.c</b>
+								<b>~/presentation (new-feature) $ git add .</b>
+								<b>~/presentation (new-feature) $ git status</b>
+								On branch new-feature
+								Changes to be committed:
+								  (use "git reset HEAD file..." to unstage)
 
-										new file:   functions.c
-									~/presentation (new-feature) $ git stash
-									Saved working directory and index state WIP on new-feature: a07557e Contributors file
-									HEAD is now at a07557e Contributors file
+									new file:   functions.c
+								<b>~/presentation (new-feature) $ git stash</b>
+								Saved working directory and index state WIP on new-feature: a07557e Contributors file
+								HEAD is now at a07557e Contributors file
 								</code>
 							</pre>
 						</section>
@@ -968,13 +968,13 @@
 							<h2>git stash</h2>
 							<pre>
                             	<code data-trim data-noescape  class="hljs">
-									~/presentation (new-feature) $ git checkout master
-									~/presentation (master) $ echo "another line" >> README.md
-									~/presentation (master) $ git add .
-									~/presentation (master) $ git commit -m "Update README"
+									<b>~/presentation (new-feature) $ git checkout master</b>
+									<b>~/presentation (master) $ echo "another line" >> README.md</b>
+									<b>~/presentation (master) $ git add .</b>
+									<b>~/presentation (master) $ git commit -m "Update README"</b>
 									[master 90792a8] Update README
 		 							1 file changed, 1 insertion(+)
-		 							~/presentation (master) $ git push
+		 							<b>~/presentation (master) $ git push</b>
 		 							Counting objects: 3, done.
 									Delta compression using up to 4 threads.
 									Compressing objects: 100% (3/3), done.
@@ -989,8 +989,8 @@
 							<h2>git stash</h2>
 							<pre>
                             	<code data-trim data-noescape  class="hljs">
-									~/presentation (master) $ git checkout new-feature
-									~/presentation (new-feature) $ git stash pop
+									<b>~/presentation (master) $ git checkout new-feature</b>
+									<b>~/presentation (new-feature) $ git stash pop</b>
 									On branch new-feature
 									Changes to be committed:
 									  (use "git reset HEAD file..." to unstage)
@@ -1002,56 +1002,56 @@
 							</pre>
 						</section>
 						<section>
-							<p>git stash works just like a stack, we can push changes on top of it, and pop them when necessary</p>
+							<p>Git stash works just like a stack, we can push changes on top of it, and pop them when necessary.</p>
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-								~/presentation (new-feature) $ git status
+								<b>~/presentation (new-feature) $ git status</b>
 								On branch new-feature
 								Changes to be committed:
 								  (use "git reset HEAD file..." to unstage)
 
 									new file:   functions.c
-								~/presentation (new-feature) $ git stash
+								<b>~/presentation (new-feature) $ git stash</b>
 								Saved working directory and index state WIP on new-feature: a07557e Contributors file
 								HEAD is now at a07557e Contributors file
-								~/presentation (new-feature) $ echo "#include<stdlib.h>" >> utils.c
-								~/presentation (new-feature) $ git add utils.c
-								~/presentation (new-feature) $ git stash
-								~/presentation (new-feature) $ git stash list
+								<b>~/presentation (new-feature) $ echo "#include < stdlib.h >" >> utils.c</b>
+								<b>~/presentation (new-feature) $ git add utils.c</b>
+								<b>~/presentation (new-feature) $ git stash</b>
+								<b>~/presentation (new-feature) $ git stash list</b>
 								stash@{0}: WIP on new-feature: a07557e Contributors file
 								stash@{1}: WIP on new-feature: a07557e Contributors file
 								</code>
 							</pre>
-								<p>We have on stash stack two elements, the latest at index 0</p>
+								<p>We have on stash stack two elements, the latest at index 0.</p>
 						</section>
 						<section>
 								<p>Checking what changes are on which element of stack is done with:</p>
 								<pre>
                             		<code data-trim data-noescape  class="hljs">
-									~/presentation (new-feature) $ git stash show -p stash@{1}
+									<b>~/presentation (new-feature) $ git stash show -p stash@{1}</b>
 									diff --git a/functions.c b/functions.c
 									new file mode 100644
 									index 0000000..53c5fdf
 									--- /dev/null
 									+++ b/functions.c
 									@@ -0,0 +1 @@
-									+#include <stdio.h>
+									+#include < stdio.h >
 									</code>
 								</pre>
-								<p>once again, git stash is a stack, with the most recent element at index 0</p>
+								<p>once again, git stash is a stack, with the most recent element at index 0.</p>
 							</code>
 						</section>
 						<section>
 							<pre>
                             	<code data-trim data-noescape  class="hljs">
-							~/presentation (new-feature) $ git stash pop
+							<b>~/presentation (new-feature) $ git stash pop</b>
 							On branch new-feature
 							Changes to be committed:
 							  (use "git reset HEAD file..." to unstage)
 
 								new file:   utils.c
 							Dropped refs/stash@{0} (9abb1165605d667dd569651670a8dfffbdda8153)
-							~/presentation (new-feature) $ git stash pop
+							<b>~/presentation (new-feature) $ git stash pop</b>
 							On branch new-feature
 							Changes to be committed:
 							  (use "git reset HEAD file..." to unstage)
@@ -1061,13 +1061,13 @@
 							Dropped refs/stash@{0} (435763c5d1fbd8c8caf3cbeedf2f61184c7ceed3)
 							</code>
 						</pre>
-						<p>after two pops, stash stack is empty, and files came back to staging area (a.k.a. index)</p>
+						<p>After two pops, stash stack is empty, and files came back to staging area (a.k.a. index).</p>
 					</section>
 					<section>
-						<p>we can commit those changes now. </p>
+						<p>We can commit those changes now.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (new-feature) $ git commit -m "Add new important files"
+							<b>.~/presentation (new-feature) $ git commit -m "Add new important files"</b>
 							[new-feature fe99004] Add new important files
 							 2 files changed, 2 insertions(+)
 							 create mode 100644 functions.c
@@ -1076,23 +1076,23 @@
 						</pre>
 					</section>
 					<section>
-						<p>but wait.... we wanted to commit them in the master branch</p>
+						<p>But wait.... We wanted to commit them in the master branch.</p>
 					</section>
 					<section>
-						<h4>not a problem at all.</h4>
+						<h4>Not a problem at all.</h4>
 
-							<p>Step one - checkout to desirable branch</p>
+							<p>Step one - checkout to desirable branch.</p>
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-								~/presentation (new-feature) $ git checkout master
+								<b>~/presentation (new-feature) $ git checkout master</b>
 								Switched to branch 'master'
 								Your branch is up-to-date with 'origin/master'.
 								</code>
 							</pre>
-							<p>Step two - check hash of commit you want to move</p>
+							<p>Step two - check hash of commit you want to move.</p>
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git log new-feature -1
+								<b>~/presentation (master) $ git log new-feature -1</b>
 								commit fe99004d790db12c0aa34b5c3e562cf7977041f8
 								Author: jedrzej <jbszczepaniak@gmail.com>
 								Date:   Sat Mar 11 09:27:32 2017 +0100
@@ -1100,13 +1100,13 @@
 								Add new important files
 								</code>
 							</pre>
-							<p>This git log command says give me last commit from given branch by the way</p>
+							<p class="fragment">This git log command says "give me last commit from given branch" by the way.</p>
 					</section>
 					<section>
-						<p>Step three - pick the cherry</p>
+						<p>Step three - pick the cherry.</p>
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-									~/presentation (master) $ git cherry-pick fe99004d790d
+									<b>~/presentation (master) $ git cherry-pick fe99004d790d</b>
 									[master 2e173df] Add new important files
 									 Date: Sat Mar 11 09:27:32 2017 +0100
 									 2 files changed, 2 insertions(+)
@@ -1114,13 +1114,13 @@
 									 create mode 100644 utils.c
 								</code>
 							</pre>
-							<p>it is ok, to give just the beginning of hash.</p>
+							<p>It is ok, to give just the beginning of hash.</p>
 					</section>
 					<section>
-						<p>As can be seen below <mark>cherry pick</mark> get changes from given commit and commits this changes with the same commit message (but different hash, because it is different commit) on current branch</p>
+						<p>As can be seen below <mark>cherry pick</mark> gets changes from given commit and commits these changes with the same commit message (but different hash, because it is different commit) on current branch.</p>
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-									~/presentation (master) $ git lg | head -n 5
+									<b>~/presentation (master) $ git lg | head -n 5</b>
 									* 2e173df - (19 minutes ago) Add new important files - jedrzej (HEAD -> master)
 									* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
 									| * fe99004 - (19 minutes ago) Add new important files - jedrzej (new-feature)
@@ -1128,15 +1128,15 @@
 									* a07557e - (3 weeks ago) Contributors file - jedrzej (tag: v2)
 								</code>
 							</pre>
-							<p><mark>head -n 5</mark> says "i want only last 5 lines of output"</p>
+							<p>Command <mark>head -n 5</mark> says "i want only last 5 lines of output".</p>
 					</section>
 					<section>
-						<p>Step four - remove changes from new-feature branch</p>
+						<p>Step four - remove changes from new-feature branch.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-								~/presentation (new-feature) $ git reset --hard HEAD~
+								<b>~/presentation (new-feature) $ git reset --hard HEAD~</b>
 								HEAD is now at a07557e Contributors file
-								~/presentation (new-feature) $ git lg | -n 5
+								<b>~/presentation (new-feature) $ git lg | -n 5</b>
 								* 2e173df - (26 minutes ago) Add new important files - jedrzej (master)
 								* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
 								* a07557e - (3 weeks ago) Contributors file - jedrzej (HEAD -> new-feature, tag: v2)
@@ -1150,19 +1150,19 @@
 						<h1>GIT RESET DEMISTIFICATION</h1>
 					</section>
 					<section>
-						<p>what git reset is not about</p>
+						<p>What git reset is not about:</p>
 						<img src="reset.gif"  height="400" width="800" class="fragment">
 					</section>
 					<section>
-						<p>git reset modes are:</p>
+						<p>Git reset modes are:</p>
 						<ul>
-							<li>--soft</li>
-							<li>--mixed (default)</li>
-							<li>--hard</li>
-							<li>--merge</li>
-							<li>--keep</li>
+							<li>--soft,</li>
+							<li>--mixed (default),</li>
+							<li>--hard,</li>
+							<li>--merge,</li>
+							<li>--keep.</li>
 						</ul>
-						<p class="fragment">we will briefly discuss first three methods</p>
+						<p class="fragment">We will briefly discuss first three methods.</p>
 					</section>
 					<section>
 						<h4>Preliminary knowledge</h4>
@@ -1171,15 +1171,15 @@
 					</section>
 					<section>
 						<h3>git reset --mixed </h3>
-						<p>resets HEAD to the specified commit and <mark>puts changes done after this specified commit in working directory</mark></p>
-						<p>How does the repo looks like ?</p>
+						<p>Resets HEAD to the specified commit and <mark>puts changes done after this specified commit in working directory.</mark></p>
+						<p>How does the repo looks like?</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git lg | head -n 2
+							<b>~/presentation (master) $ git lg | head -n 2</b>
 							* 2e173df - (7 hours ago) Add new important files - jedrzej (HEAD -> master)
 							* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
 
-							~/presentation (master) $ git status
+							<b>~/presentation (master) $ git status</b>
 							On branch master
 							Your branch is ahead of 'origin/master' by 1 commit.
 							  (use "git push" to publish your local commits)
@@ -1191,8 +1191,8 @@
 						<h3>git reset --mixed </h3>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git reset --mixed 90792a8
-							~/presentation (master) $ git status
+							<b>~/presentation (master) $ git reset --mixed 90792a8</b>
+							<b>~/presentation (master) $ git status</b>
 							On branch master
 							Your branch is up-to-date with 'origin/master'.
 							Untracked files:
@@ -1202,20 +1202,20 @@
 								utils.c
 
 							nothing added to commit but untracked files present (use "git add" to track)
-							~/presentation (master) $ git lg | head -n 2
+							<b>~/presentation (master) $ git lg | head -n 2</b>
 							* 90792a8 - (3 days ago) Update README - jedrzej (HEAD -> master, origin/master)
 							* a07557e - (3 weeks ago) Contributors file - jedrzej (tag: v2, new-feature)
 							</code>
 						</pre>
-						<p>Files functions.c and utils.c are untracked now, because they were created after commit with hash: 90792a8</p>
+						<p>Files functions.c and utils.c are untracked now, because they were created after commit with hash: 90792a8.</p>
 					</section>
 					<section>
 						<h3>git reset --mixed </h3>
-						<p>Let's go back to prevoius state and introduce changes to existing file</p>
+						<p>Let's go back to the previous state and introduce changes to existing file.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git add .
-							~/presentation (master) $ git commit -m "Add new important files"
+							<b>~/presentation (master) $ git add .</b>
+							<b>~/presentation (master) $ git commit -m "Add new important files"</b>
 							[master 945257a] Add new important files
 							 2 files changed, 3 insertions(+)
 							 create mode 100644 functions.c
@@ -1224,12 +1224,12 @@
 						</pre>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ echo "Build instructions:" >> README.md
-							~/presentation (master) $ git add README.md
-							~/presentation (master) $ git commit -m "Update README"
+							<b>~/presentation (master) $ echo "Build instructions:" >> README.md</b>
+							<b>~/presentation (master) $ git add README.md</b>
+							<b>~/presentation (master) $ git commit -m "Update README"</b>
 							[master 188166b] Update README
 							 1 file changed, 1 insertion(+)
-							~/presentation (master) $ git lg | head -n 2
+							<b>~/presentation (master) $ git lg | head -n 2</b>
 							* 188166b - (5 seconds ago) Update README - jedrzej (HEAD -> master)
 							* 945257a - (47 seconds ago) Add new important files - jedrzej
 							</code>
@@ -1239,10 +1239,10 @@
 						<h3>git reset --mixed </h3>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git reset --mixed 945257a
+							<b>~/presentation (master) $ git reset --mixed 945257a</b>
 							Unstaged changes after reset:
 							M	README.md
-							~/presentation (master) $ git status
+							<b>~/presentation (master) $ git status</b>
 							On branch master
 							Your branch is ahead of 'origin/master' by 1 commit.
 							  (use "git push" to publish your local commits)
@@ -1256,17 +1256,17 @@
 							</code>
 						</pre>
 						<p>
-							Now changes are seen in <b>git status</b> as "not staged for commit", which also means that they are in working tree, but this team we reset to the point where README.md file was already known by git.
+							Now changes are seen in <b>git status</b> as "not staged for commit", which also means that they are in working tree, but this time we reset to the point where README.md file was already known by git.
 						</p>
 					</section>
 					<section>
 						<h3>git reset --soft</h3>
-						<p>resets HEAD to the specified commit and <mark>puts changes done after this specified commit in staging area (a.k.a. index, or cache)</mark></p>
-						<p>How does the repo looks like ?</p>
+						<p>Resets HEAD to the specified commit and <mark>puts changes done after this specified commit in staging area (a.k.a. index, or cache)</mark></p>
+						<p>How does the repo look like?</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git checkout . #Discards changes done to README
-								~/presentation (master) $ git lg | head -n 2
+								<b>~/presentation (master) $ git checkout . #Discards changes done to README</b>
+								<b>~/presentation (master) $ git lg | head -n 2</b>
 								* 945257a - (11 minutes ago) Add new important files - jedrzej (HEAD -> master)
 								* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
 							</code>
@@ -1276,8 +1276,8 @@
 						<h3>git reset --soft</h3>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git reset --soft 90792a8
-							~/presentation (master) $ git status
+							<b>~/presentation (master) $ git reset --soft 90792a8</b>
+							<b>~/presentation (master) $ git status</b>
 							On branch master
 							Your branch is up-to-date with 'origin/master'.
 							Changes to be committed:
@@ -1287,10 +1287,10 @@
 								new file:   utils.c
 							</code>
 						</pre>
-						<p>After this reset files are in index, let's commit them again</p>
+						<p>After this reset, files are in index, let's commit them again.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git commit -m "Add new important files"
+								<b>~/presentation (master) $ git commit -m "Add new important files"</b>
 								[master cf6018c] Add new important files
 								 2 files changed, 3 insertions(+)
 								 create mode 100644 functions.c
@@ -1300,20 +1300,20 @@
 					</section>
 					<section>
 						<h3>git reset --hard</h3>
-						<p>resets HEAD to the specified commit and <mark>discards changes done after this specified commit</mark></p>
-						<p>repo looks like this</p>
+						<p>Resets HEAD to the specified commit and <mark>discards changes done after this specified commit</mark></p>
+						<p>Repo looks like this:</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git lg | head -n 2
+							<b>~/presentation (master) $ git lg | head -n 2</b>
 							* cf6018c - (3 minutes ago) Add new important files - jedrzej (HEAD -> master)
 							* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
 							</code>
 						</pre>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git reset --hard 90792a8
+								<b>~/presentation (master) $ git reset --hard 90792a8</b>
 								HEAD is now at 90792a8 Update README
-								jedrzej@jedrzej-UX303LB ~/one-more-time/presentation (master) $ git status
+								<b>~/presentation (master) $ git status</b>
 								On branch master
 								Your branch is up-to-date with 'origin/master'.
 								nothing to commit, working directory clean
@@ -1322,18 +1322,18 @@
 					</section>
 					<section>
 						<h3>git reset --hard</h3>
-						<p justify="allign">Changes are lost. There is hope however to recover from this thank to <b>git reflog</b>. Git reflog is a history of things we've done to our repository locally, and it is pruned after 90 days (by default). that is why we can recover from mistakes most of the time</p>
+						<p justify="allign">Changes are gone. There is hope however, we can recover from this thanks to <b>git reflog</b>. Git reflog is a history of things we've done to our repository locally, and it is pruned after 90 days (by default). that is why we can recover from mistakes most of the time.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git reflog | head -n 5
+								<b>~/presentation (master) $ git reflog | head -n 5</b>
 								90792a8 HEAD@{0}: reset: moving to 90792a8
 								cf6018c HEAD@{1}: commit: Add new important files
 								90792a8 HEAD@{2}: reset: moving to 90792a8
 								945257a HEAD@{3}: reset: moving to 945257a
 								188166b HEAD@{4}: commit: Update README
-								~/presentation (master) $ git reset --hard HEAD@{1}
+								<b>~/presentation (master) $ git reset --hard HEAD@{1}</b>
 								HEAD is now at cf6018c Add new important files
-								~/presentation (master) $ git lg | head -2
+								<b>~/presentation (master) $ git lg | head -2</b>
 								* cf6018c - (11 minutes ago) Add new important files - jedrzej (HEAD -> master)
 								* 90792a8 - (3 days ago) Update README - jedrzej (origin/master)
 							</code>
@@ -1343,14 +1343,14 @@
 				<section>
 					<h4>SUMMARY</h4>
 					<ul>
-						<li>branching</li>
-						<li>rebasing</li>
-						<li>tags</li>
-						<li>fixing things</li>
+						<li class="fragment">branching</li>
+						<li class="fragment">rebasing</li>
+						<li class="fragment">tags</li>
+						<li class="fragment">fixing things</li>
 							<ul>
-								<li>git stash</li>
-								<li>git cherry-pick</li>
-								<li>git reset</li>
+								<li class="fragment">git stash</li>
+								<li class="fragment">git cherry-pick</li>
+								<li class="fragment">git reset</li>
 							</ul>
 					</ul>
 				</section>
