@@ -48,11 +48,11 @@
 					<section>
 						and your terminal prompt will change from:
 						<pre><code data-trim data-noescape>
-						$
+						<b>$</b>
 						</code></pre>
 						into:
 						<pre><code data-trim data-noescape>
-						(branchname)$
+						<b>(branchname)$</b>
 						</code></pre>
 					</section>
 					<section>
@@ -71,14 +71,14 @@
 						Create a folder and go to it.
 						<pre>
 							<code data-trim data-noescape class="bash">
-								~ $ mkdir presentation
-								~ $ cd presentation/
+								<b>~ $ mkdir presentation</b>
+								<b>~ $ cd presentation/</b>
  							</code>
  						</pre>
  						initialize empty git repository
  						<pre>
  							<code data-trim data-noescape class="bash">
-								~/presentation $ git init
+								<b>~/presentation $ git init</b>
 								Initialized empty Git repository in /home/jedrzej/presentation/.git/
 							</code>
 						</pre>
@@ -87,13 +87,13 @@
 						create .gitignore file
 						<pre>
 							<code data-trim data-noescape>
-	 							~/presentation $ touch .gitignore
+	 							<b>~/presentation $ touch .gitignore</b>
 	 						</code>
 	 					</pre>
 	 					check status of repository
 	 					<pre>
 	 						<code data-trim data-noescape class="bash">
-	 					~/presentation $ git status
+							<b>~/presentation $ git status</b>
 							On branch master
 							Initial commit
 							Untracked files:
@@ -107,8 +107,8 @@
 						add .gitignore to existing repository
 						<pre>
 							<code data-trim data-noescape class="bash">
-								~/presentation $ git add .gitignore
-								~/presentation $ git commit -m "Initial commit with .gitignore file"
+								<b>~/presentation $ git add .gitignore</b>
+								<b>~/presentation $ git commit -m "Initial commit with .gitignore file"</b>
 								[master (root-commit) 95f2f4a] Initial commit with .gitignore file
 								 1 file changed, 0 insertions(+), 0 deletions(-)
 								 create mode 100644 .gitignore
@@ -119,7 +119,7 @@
 						check logs in repository
 						<pre>
 							<code data-trim data-noescape  class="bash">
-							~/presentation (master) $ git log
+							<b>~/presentation (master) $ git log</b>
 							commit 95f2f4abe5368c632dd920e73961999c08b0af85
 							Author: jedrzej <jedrzej@szczepaniak.com>
 							Date:   Sun Feb 19 12:43:11 2017 +0100
@@ -131,7 +131,7 @@
 				</section>
 				<section >
 					<section>
-						<h4>Let's create remote repository</h4>
+						<h2>Let's create remote repository</h2>
 						<h4>on local machine just for sake of this presentation</h4>
 						<p>because it is not really important, wheter it sits on github.com, gitlab.com, bitbucket.com, or in another directory on local machine</p>
 					</section>
@@ -139,8 +139,8 @@
 						let's create new directory and go to this directory.
 						<pre>
 							<code data-trim data-noescape  class="bash">
-							~ $ mkdir presentation-remote
-							~ $ cd presentation-remote
+							<b>~ $ mkdir presentation-remote</b>
+							<b>~ $ cd presentation-remote</b>
 							</code>
 						</pre>
 					</section>
@@ -149,49 +149,47 @@
 						Bare repository does not have checked out working tree, which means that in this repository, we don't have any source code. We have only the state of git repository.
 						<pre>
 							<code data-trim data-noescape  class="bash">
-							~/presentation-remote $ git init --bare
+							<b>~/presentation-remote $ git init --bare</b>
 							Initialized empty Git repository in /home/jedrzej/presentation-remote/
 							</code>
 						</pre>
 					</section>
 					<section>
-						<p>content of bare repository is different than content of regular repository.</p>
-						<p>There is no .git directory, all of the informations are kept in special directories</p>
+						<p>Content of bare repository is different than content of regular repository. There is no .git directory. All of the informations are kept in special directories</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation-remote $ ls -a
+							<b>~/presentation-remote $ ls -a</b>
 							.  ..  branches  config  description  HEAD  hooks  info  objects  refs
 							</code>
 						</pre>
 					</section>
 					<section>
-						<p>last one step, we should tell our local repository about remote repository</p>
+						<p>Last one step, we should tell our local repository about remote repository</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git remote add origin ../presentation-remote/
+							<b>~/presentation (master) $ git remote add origin ../presentation-remote/</b>
 							</code>
 						</pre>
 						<p>and that we want our local master branch to track remote master branch</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git push --set-upstream origin master
+							<b>~/presentation (master) $ git push --set-upstream origin master</b>
 							</code>
 						</pre>
 					</section>
 					<section>
-						<p>we can do some verification</p>
+						<p>We can do some verification</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git remote -vvv
+							<b>~/presentation (master) $ git remote -vvv</b>
 							origin	../presentation-remote/ (fetch)
 							origin	../presentation-remote/ (push)
 							</code>
 						</pre>
-						-vvv means be as verbose as you can.
-
+						<p><b>-vvv</b> means be as verbose as you can.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							jedrzej@jedrzej-UX303LB ~/presentation (master) $ git remote show origin
+							<b>~/presentation (master) $ git remote show origin</b>
 							* remote origin
 							  Fetch URL: ../presentation-remote/
 							  Push  URL: ../presentation-remote/
@@ -214,37 +212,37 @@
 				</section>
 				<section>
 					<section>
-						let's create new branch
+						<h2>Let's create new branch</h2>
 					</section>
 					<section>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git checkout -b "create-readme"
+							<b>~/presentation (master) $ git checkout -b "create-readme"</b>
 							Switched to a new branch 'create-readme'
 							</code>
 						</pre>
-						equivalent version of the same output would be
+						<p>equivalent version of the same output would be:</p>
 						<pre>
 							<code data-trim data-noescape  class="bash">
-							~/presentation (master) $ git branch create-readme
-							~/presentation (master) $ git checkout create-readme
+							<b>~/presentation (master) $ git branch create-readme</b>
+							<b>~/presentation (master) $ git checkout create-readme</b>
 							Switched to branch 'create-readme'
 							</code>
 						</pre>
 					</section>
 					<section>
-						let's create readme
+						<p>Let's create readme</p>
 						<pre>
 							<code data-trim data-noescape  class="bash">
-							~/presentation (create-readme) $ touch README.md
-							~/presentation (create-readme) $ echo "This is readme.md" > README.md
+							<b>~/presentation (create-readme) $ touch README.md</b>
+							<b>~/presentation (create-readme) $ echo "This is readme.md" > README.md</b>
 							</code>
 						</pre>
-						add it to repository
+						<p>add it to repository</p>
 						<pre>
 							<code data-trim data-noescape  class="bash">
-							~/presentation (create-readme) $ git add README.md
-							~/presentation (create-readme) $ git status
+							<b>~/presentation (create-readme) $ git add README.md</b>
+							<b>~/presentation (create-readme) $ git status</b>
 							On branch create-readme
 							Changes to be committed:
 							  (use "git reset HEAD file..." to unstage)
@@ -254,10 +252,10 @@
 						</pre>
 					</section>
 					<section>
-						and commit it
+						<p>and commit it</p>
 						<pre>
 							<code data-trim data-noescape  class="bash">
-							~/presentation (create-readme) $ git commit -m "Create readme file"
+							<b>~/presentation (create-readme) $ git commit -m "Create readme file"</b>
 							[create-readme b21b19b] Create readme file
 							 1 file changed, 1 insertion(+)
 							 create mode 100644 README.md
@@ -265,13 +263,13 @@
 						</pre>
 					</section>
 					<section>
-						now we want to go back to master branch, and merge changes from create-readme branch
+						<p>now we want to go back to master branch, and merge changes from create-readme branch</p>
 						<pre>
 							<code data-trim data-noescape  class="bash">
-							~/presentation (create-readme) $ git checkout master
+							<b>~/presentation (create-readme) $ git checkout master</b>
 							Switched to branch 'master'
 							Your branch is up-to-date with 'origin/master'.
-							~/presentation (master) $ git merge create-readme
+							<b>~/presentation (master) $ git merge create-readme</b>
 							Updating 95f2f4a..b21b19b
 							Fast-forward
 							 README.md | 1 +
@@ -281,10 +279,10 @@
 						</pre>
 					</section>
 					<section>
-						let's push those changes to remote
+						<p>Let's push those changes to remote</p>
 						<pre>
 							<code data-trim data-noescape  class="bash">
-							~/presentation (master) $ git push
+							<b>~/presentation (master) $ git push</b>
 							Counting objects: 3, done.
 							Delta compression using up to 4 threads.
 							Compressing objects: 100% (2/2), done.
@@ -296,10 +294,10 @@
 						</pre>
 					</section>
 					<section>
-						suddenly, remote repository knows about new branch - master, because we pushed it to remote.
+						<p>Suddenly, remote repository knows about new branch - master, because we pushed it to remote.</p>
 						<pre>
 							<code data-trim data-noescape  class="bash">
-							~/presentation-remote $ git branch
+							<b>~/presentation-remote $ git branch</b>
 							* master
 							</code>
 						</pre>
@@ -308,20 +306,20 @@
 						From perspective of local repository, the remote repository is called origin. It is a convention. It could have any other name, we just explicitly told that we want to name it origin via
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git remote add origin ../presentation-remote/
+							<b>~/presentation (master) $ git remote add origin ../presentation-remote/</b>
 							</code>
 						</pre>
-						That is why from local perspective, the remote branch master is <mark>origin/master</mark>
+						<p>That is why from local perspective, the remote branch master is <mark>origin/master</mark></p>
 						</section>
 						<section>
 							<p>We use origin by default always when we clone repository.</p>
-							<p>git assumes that we will want refer to remote repository in the future and it automatically sets remote repository for us, and calls it <mark>origin</mark>.</p>
+							<p>Git assumes that we will want refer to remote repository in the future and it automatically sets remote repository for us, and calls it <mark>origin</mark>.</p>
 						</section>
 						<section>
-							<p>let's check</p>
+							<p>Let's check</p>
 							<pre>
 								<code data-trim data-noescape  class="bash">
-								~ $ git clone git@github.com:jedruniu/git-idev-presentation.git
+								<b>~ $ git clone git@github.com:jedruniu/git-idev-presentation.git</b>
 								Cloning into 'git-idev-presentation'...
 								remote: Counting objects: 150, done.
 								remote: Compressing objects: 100% (113/113), done.
@@ -329,40 +327,40 @@
 								Receiving objects: 100% (150/150), 2.66 MiB | 1.19 MiB/s, done.
 								Resolving deltas: 100% (35/35), done.
 								Checking connectivity... done.
-								~ $ cd git-idev-presentation/
-								~/git-idev-presentation (master) $ git remote -vvv
+								<b>~ $ cd git-idev-presentation/</b>
+								<b>~/git-idev-presentation (master) $ git remote -vvv</b>
 								origin	git@github.com:jedruniu/git-idev-presentation.git (fetch)
 								origin	git@github.com:jedruniu/git-idev-presentation.git (push)
-								~/git-idev-presentation (master) $
+								<b>~/git-idev-presentation (master) $</b>
 								</code>
 							</pre>
 						</section>
 						<section>
-							now we decided that we don't need create-readme branch anymore
-							to remove local branch we run
+							<p>Now we decided that we don't need create-readme branch anymore
+							to remove local branch we run</p>
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git branch -d create-readme
+								<b>~/presentation (master) $ git branch -d create-readme</b>
 								Deleted branch create-readme (was b21b19b).
 								</code>
 							</pre>
 						</section>
 						<section>
-							someone creates branch in remote repository
+							Someone creates branch in remote repository
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-								~/presentation-remote (master) $ git branch new-functionality
-								~/presentation-remote (master) $ git branch
+								<b>~/presentation-remote (master) $ git branch new-functionality</b>
+								<b>~/presentation-remote (master) $ git branch</b>
 								* master
 								  new-functionality
 								</code>
 							</pre>
 						</section>
 						<section>
-							we do git pull do make sure that our local repository is up to date
+							We do git pull do make sure that our local repository is up to date
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git pull
+								<b>~/presentation (master) $ git pull</b>
 								From ../presentation-remote
 								 * [new branch]      new-functionality -> origin/new-functionality
 								Already up-to-date.
@@ -374,7 +372,7 @@
 							But we don't like this branch very much and we would like to deleted it. We can.
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git push origin :new-functionality
+								<b>~/presentation (master) $ git push origin :new-functionality</b>
 								To ../presentation-remote/
 								 - [deleted]         new-functionality
 								</code>
@@ -382,26 +380,25 @@
 							Now on the remote repository new-functionality branch is gone
 							<pre>
 								<code data-trim data-noescape  class="hljs">
-								~/presentation-remote (master) $ git branch
+								<b>~/presentation-remote (master) $ git branch</b>
 								* master
 								</code>
 							</pre>
 						</section>
 					</section>
-
 				<section>
 					<section>
-						rebasing
+						<h1>rebasing</h1>
 					</section>
 					<section>
-						we create locally new branch called statistics, and commit some file in it
+						<p>We create locally new branch called statistics, and commit some file in it</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git checkout -b statistics
+							<b>~/presentation (master) $ git checkout -b statistics</b>
 							Switched to a new branch 'statistics'
-							~/presentation (statistics) $ echo "Statistics code" > stats.c
-							~/presentation (statistics) $ git add stats.c
-							~/presentation (statistics) $ git commit -m "core statistics file"
+							<b>~/presentation (statistics) $ echo "Statistics code" > stats.c</b>
+							<b>~/presentation (statistics) $ git add stats.c</b>
+							<b>~/presentation (statistics) $ git commit -m "core statistics file"</b>
 							[statistics d81de1f] core statistics file
 							 1 file changed, 1 insertion(+)
 							 create mode 100644 stats.c
@@ -409,25 +406,25 @@
 						</pre>
 					</section>
 					<section>
-						then we go back to master and change something in README.md
+						<p>Then we go back to master and change something in README.md</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (statistics) $ git checkout master
+							<b>~/presentation (statistics) $ git checkout master</b>
 							Switched to branch 'master'
 							Your branch is up-to-date with 'origin/master'.
-							~/presentation (master) $ echo "new line in readme" >> README.md
-							~/presentation (master) $ git add README.md
-							~/presentation (master) $ git commit -m "Readme update"
+							<b>~/presentation (master) $ echo "new line in readme" >> README.md</b>
+							<b>~/presentation (master) $ git add README.md</b>
+							<b>~/presentation (master) $ git commit -m "Readme update"</b>
 							[master 16ef7f3] Readme update
 							 1 file changed, 1 insertion(+)
 							</code>
 						</pre>
 					</section>
 					<section>
-						now our repository looks like this:
+						<p>Now our repository looks like this:</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git lg
+								<b>~/presentation (master) $ git lg</b>
 								* 16ef7f3 - (6 seconds ago) Readme update - jedrzej (HEAD -> master)
 								| * d81de1f - (26 seconds ago) core statistics file - jedrzej (statistics)
 								|/
@@ -435,10 +432,10 @@
 								* 95f2f4a - (10 minutes ago) Initial commit with .gitignore file - jedrzej
 							</code>
 						</pre>
-						for graph git log Google something like "pretty git log"
+						for graphical git log, Google something like "pretty git log". I have this one from <a href="http://stackoverflow.com/a/9074343/6556102">http://stackoverflow.com/a/9074343/6556102</a>
 					</section>
 					<section>
-						now if we want to have changes from statistics branch in master branch we can do merge.
+						<p>Now if we want to have changes from statistics branch in master branch we can do merge.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
 							(b21b19b)------(16ef7f3)
@@ -453,7 +450,7 @@
 						We merge:
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git merge statistics
+							<b>~/presentation (master) $ git merge statistics</b>
 							Merge made by the 'recursive' strategy.
 							 stats.c | 1 +
 							 1 file changed, 1 insertion(+)
@@ -463,7 +460,7 @@
 						In effect git created merge commit (43fca4a):
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git lg
+							<b>~/presentation (master) $ git lg</b>
 							*   43fca4a - (3 seconds ago) Merge branch 'statistics' - jedrzej (HEAD -> master)
 							|\
 							| * d81de1f - (36 seconds ago) core statistics file - jedrzej (statistics)
@@ -475,10 +472,10 @@
 						</pre>
 					</section>
 					<section>
-						let's revert merge by going 1 commit back:
+						<p>Let's revert merge by going 1 commit back:</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git reset --hard HEAD~1
+							<b>~/presentation (master) $ git reset --hard HEAD~1</b>
 							HEAD is now at d672e93 Readme update
 							jedrzej@jedrzej-UX303LB ~/presentation (master) $ git lg
 							* 16ef7f3 - (6 seconds ago) Readme update - jedrzej (HEAD -> master)
@@ -491,30 +488,29 @@
 						By the way: HEAD is a pointer that points to most recent commit in current branch.
 					</section>
 					<section>
-						We rebase, which means that we change the base of the statistics branch from previous one to the most recent commit of master
+						<p>We rebase, which means that we change the base of the statistics branch from previous one to the most recent commit of master.</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git checkout statistics
+							<b>~/presentation (master) $ git checkout statistics</b>
 							Switched to branch 'statistics'
-							~/presentation (statistics) $ git rebase master
+							<b>~/presentation (statistics) $ git rebase master</b>
 							First, rewinding head to replay your work on top of it...
 							Applying: core statistics file
 							</code>
 						</pre>
 					</section>
 					<section>
-						Now our repository looks like this:
+						<p>Now our repository looks like this:</p>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~/presentation (statistics) $ git lg
+							<b>~/presentation (statistics) $ git lg</b>
 							* 0e212ec - (79 seconds ago) core statistics file - jedrzej (HEAD -> statistics)
 							* 16ef7f3 - (59 seconds ago) Readme update - jedrzej (master)
 							* b21b19b - (4 minutes ago) Create readme file - jedrzej (origin/master)
 							* 95f2f4a - (11 minutes ago) Initial commit with .gitignore file - jedrzej
 							</code>
 						</pre>
-						Commit 16ef7f3 became a base for branch statistics. It is worth to note that commit with message
-						"core statistics file" changed it's hash from d81de1f to 0e212ec. Which means that we've altered history of repository.
+						Commit <mark>16ef7f3</mark> became a base for branch statistics. It is worth to note that commit with message "core statistics file" changed it's hash from <mark>d81de1f</mark> to <mark>0e212ec</mark>. Which means that we've altered history of repository.
 					</section>
 					<section>
 						We moved from:
@@ -538,7 +534,7 @@
 						<p>We can do git pull & git merge couple of times, but then, our history will be full of merge commits that make no sense for external reader</p>
 					</section>
 					<section>
-						Let's do rebase example
+						<h2>Let's do rebase example</h2>
 					</section>
 					<section>
 						<pre>
@@ -551,7 +547,7 @@
 						</pre>
 						<pre>
 							<code data-trim data-noescape  class="hljs">
-							~ $ git rebase master
+							<b>~ $ git rebase master</b>
 							</code>
 						</pre>
 						<pre>
@@ -564,82 +560,85 @@
 						</pre>
 					</section>
 					<section>
-						<p>Always when we try to push local changes to remote repository but git says that we can't because on the remote there are changes that we don't have yet.</p>
-						<p>what do we do then?</p>
+						<p>When we try to push local changes to the remote repository, but git says that we can't because on the remote repository there are changes that we don't have yet, we have a problem.</p>
+						<p class="fragment">What do we do then?</p>
 					</section>
 					<section>
-						<p>We do git pull which actually is git fetch + git merge</p>
-						<p>which means that git will take most recent commit of fetched changes, most recent commit of our work, last common commit of those two branches (changes fetched from remote repository are in fact another branch), and will perform three-way merge, which will result in creating merge commit.</p>
+						<p>We do git pull which actually is equivalent to git fetch + git merge.</p>
+						<p class="fragment">This means that git will take most recent commit of fetched changes, most recent commit of our work, last common commit of those two branches (changes fetched from remote repository are in fact another branch), and will perform three-way merge, which will result in creating merge commit.</p>
 					</section>
 					<section>
-						The question is:
-						<p>Do we really need commits for each such situation?</p>
+						<h2>The question is:</h2>
+						<p class="fragment">Do we really need commits for each such situation?</p>
 					</section>
 					<section>
 						<h1>No</h1>
-						<p>what we can do ?</p>
-						<p>rebase!</p>
+						<p class="fragment">Why?</p>
+						<p class="fragment">Because they make history of repository illegible.</p>
+						<p class="fragment">What we can do?</p>
+						<p class="fragment">Rebase!</p>
 					</section>
-					<section>To ilustrate this situation we will:
+					<section>
+					<p>To ilustrate this situation we will:</p>
 						<ol>
-							<li>create another local repository
-							<li>clone remote repository
-							<li>commit some changes in master branch and push them to remote repository
-							<li>switch back to previous local repository
-							<li>commit some changes
-							<li>try to push them (they will be rejected)
-							<li>REBASE!!!!!
+							<li class="fragment">create another local repository,
+							<li class="fragment">clone remote repository,
+							<li class="fragment">commit some changes in master branch and push them to remote repository,
+							<li class="fragment">switch back to previous local repository,
+							<li class="fragment">commit some changes,
+							<li class="fragment">try to push them (they will be rejected),
+							<li class="fragment">REBASE !
 						</ol>
 					</section>
                     <section>
-                        <p>create another local repository</p>
+                        <p>We create another local repository.</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                                ~/presentation $ cd ..
-                                ~ $ mkdir another-local
-                                ~ $ cd another-local/
+                                <b>~/presentation $ cd ..</b>
+                                <b>~ $ mkdir another-local</b>
+                                <b>~ $ cd another-local/</b>
                             </code>
                         </pre>
                     </section>
                     <section>
-                        <p>clone remote repository</p>
+                        <p>We clone remote repository.</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                            ~/another-local $ git clone ../presentation-remote/ .
+                            <b>~/another-local $ git clone ../presentation-remote/ .</b>
                             Cloning into '.'...
                             done.
-                            ~/another-local (master) $
+                            <b>~/another-local (master) $</b>
                             </code>
                         </pre>
                     </section>
                     <section>
-                        <p>commit some changes in master branch and push them to remote repository</p>
+                        <p>We commit some changes in master branch and push them to remote repository.</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                                ~/another-local (master) $ touch LICENSE
-                                ~/another-local (master) $ git add .
-                                ~/another-local (master) $ git commit -m "License file"
+                                <b>~/another-local (master) $ touch LICENSE</b>
+                                <b>~/another-local (master) $ git add .</b>
+                                <b>~/another-local (master) $ git commit -m "License file"</b>
                                 [master d635896] License file
                                  1 file changed, 0 insertions(+), 0 deletions(-)
                                  create mode 100644 LICENSE
-                                ~/another-local (master) $ git push
+                                <b>~/another-local (master) $ git push</b>
                             </code>
                         </pre>
                     </section>
                     <section>
-                        <p>switch back to previous local repository</p>
+                        <p>We switch back to previous local repository.</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                                ~/another-local (master) $ cd ../presentation
+                                <b>~/another-local (master) $ cd ../presentation</b>
                             </code>
                         </pre>
                     </section>
                     <section>
-                        <p>commit some changes</p>
-                        <p>we can omit this step beacuse we didn't push changes last time</p>
+                        <p>We commit some changes.</p>
+                        <p>(we can omit this step beacuse we didn't push changes last time.)</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                                ~/presentation (master) $ git status
+                                <b>~/presentation (master) $ git status</b>
                                 On branch master
                                 Your branch is ahead of 'origin/master' by 1 commits.
                                   (use "git push" to publish your local commits)
@@ -648,10 +647,10 @@
                         </pre>
                     </section>
                     <section>
-                        <p>try to push them (they will be rejected)</p>
+                        <p>We try to push them (they will be rejected).</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                                ~/presentation (master) $ git push
+                                <b>~/presentation (master) $ git push</b>
                                 To ../presentation-remote/
                                  ! [rejected]        master -> master (fetch first)
                                 error: failed to push some refs to '../presentation-remote/'
@@ -664,10 +663,10 @@
                         </pre>
                     </section>
                     <section>
-                    <p>REBASE</p>
+                    <p>We do REBASE</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                                ~/presentation (master) $ git pull --rebase
+                                <b>~/presentation (master) $ git pull --rebase</b>
                                 remote: Counting objects: 2, done.
                                 remote: Compressing objects: 100% (2/2), done.
                                 remote: Total 2 (delta 0), reused 0 (delta 0)
@@ -680,10 +679,10 @@
                         </pre>
                     </section>
                     <section>
-                        <p>now we can push</p>
+                        <p>Now we can push.</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                                jedrzej@jedrzej-UX303LB ~/presentation (master) $ git push
+                                <b>~/presentation (master) $ git push</b>
                                 Counting objects: 6, done.
                                 Delta compression using up to 4 threads.
                                 Compressing objects: 100% (4/4), done.
@@ -695,11 +694,11 @@
                         </pre>
                     </section>
                     <section>
-                        <p>Now our local changes will be based on the last fetched commit, which means that our history will linear.</p>
+                        <p>Now our local changes will be based on the last fetched commit, which means that our history will be linear.</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                                ~/presentation (master) $ git lg1
-                                * d18e0d8 - (5 minutes ago) Readme update - jedrzej (HEAD -> master, origin/master)
+								<b>~/presentation (master) $ git lg</b>
+								* d18e0d8 - (5 minutes ago) Readme update - jedrzej (HEAD -> master, origin/master)
 								* d635896 - (48 seconds ago) License file - jedrzej
 								| * 0e212ec - (5 minutes ago) core statistics file - jedrzej (statistics)
 								| * 16ef7f3 - (5 minutes ago) Readme update - jedrzej
@@ -708,29 +707,29 @@
 								* 95f2f4a - (15 minutes ago) Initial commit with .gitignore file - jedrzej
                             </code>
                         </pre>
-                        <p>Our local commit <b>d18e0d8</b> which previously was based on  <b>b21b19b</b> now is based on top of fetched changes<b>(commit d635896)</b>. We have clear history.</p>
+                        <p>Our local commit <mark>d18e0d8</mark> which previously was based on  <mark>b21b19b</mark> now is based on top of fetched changes (commit <mark>d635896</mark>). We have clear history.</p>
                     </section>
                     <section>
                         <p>But we still have branch statistics which diverged.</p>
-                        <p>base of this branch is commit <b>b21b19b</b>, let's rebase it, so it's base will be on <b>d18e0d8</b></p>
+                        <p>Base of this branch is commit <mark>b21b19b</mark>, let's rebase it, so it's base will be on <mark>d18e0d8</mark>.</p>
                     </section>
                     <section>
                     	<pre>
                             <code data-trim data-noescape  class="hljs">
-                            	~/presentation (master) $ git checkout statistics
+								<b>~/presentation (master) $ git checkout statistics</b>
 								Switched to branch 'statistics'
                             </code>
                         </pre>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                            	~/presentation (statistics) $ git rebase master
+								<b>~/presentation (statistics) $ git rebase master</b>
 								First, rewinding head to replay your work on top of it...
 								Applying: core statistics file
                             </code>
                         </pre>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                            	~/presentation (statistics) $ git lg
+								<b>~/presentation (statistics) $ git lg</b>
 								* a26360f - (5 minutes ago) core statistics file - jedrzej (HEAD -> statistics)
 								* d18e0d8 - (5 minutes ago) Readme update - jedrzej (origin/master, master)
 								* d635896 - (81 seconds ago) License file - jedrzej
@@ -740,19 +739,19 @@
                         </pre>
                     </section>
                     <section>
-                    	Now we can merge statistics into master, there is not diverged branches, so merge will be of type "fast-forward"
+                    	Now we can merge statistics into master, there is not diverged branches, so merge will be of type "fast-forward".
                     	<pre>
                             <code data-trim data-noescape  class="hljs">
-                            	~/presentation (statistics) $ git checkout master
+								<b>~/presentation (statistics) $ git checkout master</b>
 								Switched to branch 'master'
 								Your branch is up-to-date with 'origin/master'.
-								~/presentation (master) $ git merge statistics
+								<b>~/presentation (master) $ git merge statistics</b>
 								Updating d18e0d8..a26360f
 								Fast-forward
 								 stats.c | 1 +
 								 1 file changed, 1 insertion(+)
 								 create mode 100644 stats.c
-								~/presentation (master) $ git lg
+								<b>~/presentation (master) $ git lg</b>
 								* a26360f - (3 hours ago) core statistics file - jedrzej (HEAD -> master, statistics)
 								* d18e0d8 - (3 hours ago) Readme update - jedrzej (origin/master)
 								* d635896 - (3 hours ago) License file - jedrzej
@@ -762,15 +761,15 @@
                         </pre>
                     </section>
                     <section>
-                    	<p>everybody is happy, because history is linear, but there is one golden rule about rebasing which everyone should remember</p>
+                    	<p>Everybody is happy because history is linear, but there is one golden rule about rebasing, which everyone should remember.</p>
                     	<q>“No one shall rebase a shared branch” ~ Everyone about rebase</q>
                     </section>
                     <section>
-                    	<p>why?</p>
-                    	<p>remember, when you are rebasing you are changing history, which means that when someone who is working on the same branch as you will try to push on branch you rebased and pushed, strange things will happen because git will think that history of the same branch is different, although in fact is the same</p>
+                    	<p>Why?</p>
+                    	<p class="fragment">Remember, when we are rebasing we are changing history, which means that when someone who is working on the same branch as we, will try to push on branch we rebased and pushed, strange things will happen because git will think that history of the same branch is different, although in fact is the same.</p>
                     </section>
                     <section>
-                    	<h3>but two scenarios we've covered are completely safe, namely:</h3>
+                    	<h3>But two scenarios we've covered are completely safe, namely:</h3>
                     	<ul>
                     		<li><b>git pull --rebase</b> when you can't push to remote repository</li>
                     		<li><b>git rebase</b> on your private branch, to clear history </li>
@@ -779,64 +778,63 @@
 				</section>
 				<section>
 					<section>
-						tags
+						<h1>Tags</h1>
 					</section>
 					<section>
-						<p>we want to mark some milestones in repository, for example to reflect relases of software, and to be able to switch between those milestones easly.</p>
+						<p>We want to mark some milestones in repository, for example to reflect relases of software, and to be able to switch between those milestones easly.</p>
 					</section>
 					<section>
-						let's create tag v1
+						<p>Let's create tag v1</p>
 						<pre>
                             <code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git tag v1
+							<b>~/presentation (master) $ git tag v1</b>
                             </code>
                         </pre>
-                        we can see all our tags
+                        <p>We can see all our tags wth:</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-							~/presentation (master) $ git tag
+							<b>~/presentation (master) $ git tag</b>
 							v1
                             </code>
                         </pre>
 					</section>
 					<section>
-						it is also reflected in logs
+						It is also reflected in logs
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git lg
+								<b>~/presentation (master) $ git lg</b>
 								* a26360f - (3 hours ago) core statistics file - jedrzej (HEAD -> master, tag: v1, statistics)
 								* d18e0d8 - (3 hours ago) Readme update - jedrzej (origin/master)
 								* d635896 - (3 hours ago) License file - jedrzej
 								* b21b19b - (3 hours ago) Create readme file - jedrzej
 								* 95f2f4a - (3 hours ago) Initial commit with .gitignore file - jedrzej
-
                             </code>
                         </pre>
 					</section>
 					<section>
-						commit some changes
+						<p>We commit some changes.</p>
 						<pre>
                             <code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ touch CONTRIBUTORS
-								~/presentation (master) $ git add .
-								~/presentation (master) $ git commit -m "Contributors file"
+								<b>~/presentation (master) $ touch CONTRIBUTORS</b>
+								<b>~/presentation (master) $ git add .</b>
+								<b>~/presentation (master) $ git commit -m "Contributors file"</b>
 								[master a07557e] Contributors file
 								 1 file changed, 0 insertions(+), 0 deletions(-)
 								 create mode 100644 CONTRIBUTORS
                             </code>
                         </pre>
-                        add another tag
+                        <p>We add another tag</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git tag v2
+								<b>~/presentation (master) $ git tag v2</b>
                             </code>
                         </pre>
 					</section>
 					<section>
-						we can return to v1
+						<p>We can return to v1</p>
 						<pre>
                             <code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ git checkout v1
+								<b>~/presentation (master) $ git checkout v1</b>
 								Note: checking out 'v1'.
 
 								You are in 'detached HEAD' state. You can look around, make experimental
@@ -853,28 +851,28 @@
                         </pre>
 					</section>
 					<section>
-						we have note from git that, we are not on any branch anymore. Our HEAD points to single commit, not on top of some brach as usual which is reflected in our prompt
+						We have note from git that we are not on any branch anymore. Our HEAD points to single commit, not on the top of some brach as usual, which is reflected in our prompt:
 						<pre>
                             <code data-trim data-noescape  class="hljs">
-                            	~/presentation ((HEAD detached at v1)) $
+								<b>~/presentation ((HEAD detached at v1)) $</b>
                             </code>
                         </pre>
-                        we can go back to any branch with git checkout
+                        <p>We can go back to any branch with git checkout</p>
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-                            	~/presentation ((HEAD detached at v2)) $ git checkout master
+								<b>~/presentation ((HEAD detached at v2)) $ git checkout master</b>
 								Switched to branch 'master'
 								Your branch is ahead of 'origin/master' by 2 commits.
 								  (use "git push" to publish your local commits)
-								~/presentation (master) $
+								<b>~/presentation (master) $</b>
                             </code>
                         </pre>
 					</section>
 					<section>
-						let's push changes to remote
+						<p>Let's push changes to remote</p>
 						<pre>
                             <code data-trim data-noescape  class="hljs">
-                            	~/presentation (master) $ git push
+								<b>~/presentation (master) $ git push</b>
 								Counting objects: 5, done.
 								Delta compression using up to 4 threads.
 								Compressing objects: 100% (4/4), done.
@@ -884,15 +882,15 @@
 								   d18e0d8..a07557e  master -> master
                             </code>
                         </pre>
-                        and swith to remote repository for a while
+                        and swith to remote repository for a while.
                         <pre>
                             <code data-trim data-noescape  class="hljs">
-								~/presentation (master) $ cd ../presentation-remote/
+								<b>~/presentation (master) $ cd ../presentation-remote/</b>
                             </code>
                         </pre>
 					</section>
 					<section>
-						what is log on remote ?
+						<p>What is log on remote ?</p>
 						<pre>
                             <code data-trim data-noescape  class="hljs">
 								~/presentation-remote (master) $ git lg
